@@ -135,7 +135,7 @@ CREATE TABLE fuel_cards (
   data_richiesta DATE,
   alimentazione TEXT,
   stato stato_fuel_card NOT NULL DEFAULT 'Non arrivata'::stato_fuel_card,
-  referente TEXT,
+  personale TEXT,
   driver_id UUID REFERENCES drivers(id) ON DELETE CASCADE,
 );
 

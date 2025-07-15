@@ -39,7 +39,7 @@ class FuelCardsService implements FuelCardsServiceInterface {
             societa: fc.societa,
             driver_id: fc.driver_id,
             stato: fc.stato || "Non arrivata",
-            referente: fc.referente,
+            personale: fc.personale,
             dataRichiesta: fc.data_richiesta,
             alimentazione: fc.alimentazione,
           })),
@@ -64,7 +64,7 @@ class FuelCardsService implements FuelCardsServiceInterface {
           fuelCard.dataRichiesta || new Date().toISOString().split("T")[0],
         alimentazione: fuelCard.alimentazione || "",
         stato: fuelCard.stato || "Non arrivata",
-        referente: fuelCard.referente || "",
+        personale: fuelCard.personale || "",
         driver_id: fuelCard.driver_id,
       };
 
@@ -101,7 +101,7 @@ class FuelCardsService implements FuelCardsServiceInterface {
           data_richiesta: fuelCard.dataRichiesta,
           alimentazione: fuelCard.alimentazione,
           stato: fuelCard.stato,
-          referente: fuelCard.referente,
+          personale: fuelCard.personale,
           driver_id: fuelCard.driver_id,
         })
         .eq("id", id);
@@ -169,7 +169,7 @@ class FuelCardsService implements FuelCardsServiceInterface {
         data_richiesta: card.data_richiesta || card.dataRichiesta || new Date().toISOString().split("T")[0],
         alimentazione: card.alimentazione || "",
         stato: card.stato || "Non arrivata",
-        referente: card.referente || "",
+        personale: card.personale || "",
         driver_id: card.driver_id || null,
       }));
 
@@ -209,7 +209,7 @@ class FuelCardsService implements FuelCardsServiceInterface {
         data_richiesta: card.dataRichiesta,
         alimentazione: card.alimentazione, // Use direct value
         stato: card.stato,
-        referente: card.referente,
+        personale: card.personale,
         driver_id: card.driver_id,
       }));
 

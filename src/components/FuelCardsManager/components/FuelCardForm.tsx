@@ -289,14 +289,14 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
 
         <input
           type="text"
-          placeholder="Referente"
+          placeholder="personale"
           className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
             ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
             : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
             }`}
-          value={newFuelCard.referente || ""}
+          value={newFuelCard.personale || ""}
           onChange={(e) =>
-            setNewFuelCard({ ...newFuelCard, referente: e.target.value })
+            setNewFuelCard({ ...newFuelCard, personale: e.target.value })
           }
         />
       </div>

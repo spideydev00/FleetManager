@@ -163,16 +163,16 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
 
           <input
             type="text"
-            placeholder="Referente"
+            placeholder="personale"
             className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
               ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
               : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
               }`}
-            value={editingFuelCard.referente}
+            value={editingFuelCard.personale}
             onChange={(e) =>
               setEditingFuelCard({
                 ...editingFuelCard,
-                referente: e.target.value,
+                personale: e.target.value,
               })
             }
           />

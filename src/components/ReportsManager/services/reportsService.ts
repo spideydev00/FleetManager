@@ -384,7 +384,7 @@ class ReportsService implements ReportsServiceInterface {
           societa: fc.societa,
           driver_id: fc.driver_id,
           stato: fc.stato || "Non arrivata",
-          referente: fc.referente,
+          personale: fc.personale,
           dataRichiesta: fc.data_richiesta,
           alimentazione: fc.alimentazione,
         }));

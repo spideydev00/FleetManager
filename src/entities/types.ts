@@ -92,7 +92,7 @@ export interface FuelCard {
   dataRichiesta: string;
   alimentazione: string;
   stato: "Non arrivata" | "In attesa" | "Arrivata";
-  referente: string;
+  personale: string;
   driver_id: string;
 }
 

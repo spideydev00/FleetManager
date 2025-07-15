@@ -109,7 +109,7 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
                   } uppercase tracking-wider`}
               >
-                Referente
+                personale
               </th>
               <th className="px-4 py-3"></th>
             </tr>
@@ -180,7 +180,7 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
                   className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
-                  {card.referente}
+                  {card.personale}
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap text-right text-sm">
                   <div className="flex space-x-2 justify-end">

@@ -51,7 +51,7 @@ const FuelCardsManager: React.FC<FuelCardsManagerProps> = ({
     dataRichiesta: "",
     alimentazione: "",
     stato: "Non arrivata",
-    referente: "",
+    personale: "",
     driver_id: undefined,
   });
 
@@ -107,7 +107,7 @@ const FuelCardsManager: React.FC<FuelCardsManagerProps> = ({
       dataRichiesta: "",
       alimentazione: "",
       stato: "Non arrivata",
-      referente: "",
+      personale: "",
       driver_id: undefined,
     });
     setDriverSearchTerm("");
@@ -122,7 +122,7 @@ const FuelCardsManager: React.FC<FuelCardsManagerProps> = ({
       dataRichiesta: "",
       alimentazione: "",
       stato: "Non arrivata",
-      referente: "",
+      personale: "",
       driver_id: undefined,
     });
     setSelectedDriverData(null);
