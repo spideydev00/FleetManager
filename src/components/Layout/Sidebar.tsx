@@ -94,7 +94,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <span className="text-white font-bold text-xl">FM</span>
           </div>
           <div>
-            <h1 className="font-bold text-xl">Fleet Manager</h1>
+            <h1 className="font-bold text-xl">TARS</h1>
             <p className="text-xs opacity-70">Gestione flotta aziendale</p>
           </div>
         </div>
