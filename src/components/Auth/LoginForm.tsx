@@ -44,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
         </div>
 
         {/* Logo */}
-        <div className="flex justify-center mb-8">
+        {/* <div className="flex justify-center mb-8">
           <img
             src="/tars-logo.png"
             alt="TARS Logo"
@@ -54,7 +54,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
               e.currentTarget.style.display = 'none';
             }}
           />
-        </div>
+        </div> */}
 
         {/* Error Message */}
         {loginError && (
