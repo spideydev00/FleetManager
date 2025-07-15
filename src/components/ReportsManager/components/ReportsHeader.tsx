@@ -41,12 +41,12 @@ const ReportsHeader: React.FC<ReportsHeaderProps> = ({
         <button
           onClick={() => setShowFilters(!showFilters)}
           className={`px-4 py-2 rounded-lg flex items-center space-x-2 ${isDarkMode
-              ? "bg-gray-700 text-gray-200 hover:bg-gray-600"
-              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            ? "bg-gray-700 text-gray-200 hover:bg-gray-600"
+            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
         >
           <Filter className="w-4 h-4" />
-          <span>Filtri</span>
+          <span>Esegui A.D</span>
         </button>
         <button
           onClick={onExportExcel}
