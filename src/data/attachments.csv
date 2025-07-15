@@ -1,0 +1,13 @@
+nome,tipo,dimensione,data_caricamento,contenuto
+Patente_Rossi.pdf,application/pdf,1245678,2022-01-20,base64encodedcontent1
+Contratto_Bianchi.pdf,application/pdf,987543,2022-02-25,base64encodedcontent2
+Assicurazione_Verdi.pdf,application/pdf,2345678,2022-03-15,base64encodedcontent3
+Carta_Identità_Neri.jpg,image/jpeg,456789,2022-04-10,base64encodedcontent4
+Patente_Gialli.pdf,application/pdf,1123456,2022-05-15,base64encodedcontent5
+Contratto_Marroni.docx,application/docx,876543,2022-06-20,base64encodedcontent6
+Assicurazione_Viola.pdf,application/pdf,1765432,2022-07-25,base64encodedcontent7
+Fattura_Azzurri.pdf,application/pdf,543210,2022-08-30,base64encodedcontent8
+Patente_Rosa.jpg,image/jpeg,345678,2022-09-18,base64encodedcontent9
+Contratto_Grigi.pdf,application/pdf,1654321,2022-10-22,base64encodedcontent10
+Carta_Identità_Celesti.jpg,image/jpeg,432198,2022-11-10,base64encodedcontent11
+Assicurazione_Arancio.pdf,application/pdf,1345678,2022-12-15,base64encodedcontent12

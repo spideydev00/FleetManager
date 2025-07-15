@@ -1,0 +1,11 @@
+autore,messaggio,data_risposta,is_admin,message_id
+Support Team,Buongiorno Sig. Rossi. Potrebbe provare a cancellare la cache dell'applicazione?,2023-05-10T14:30:00,true,70c175c8-d027-4f18-b1fe-638f625fd29c
+Marco Rossi,Ho provato ma il problema persiste,2023-05-10T15:45:00,false,70c175c8-d027-4f18-b1fe-638f625fd29c
+Support Team,Gentile Sig.ra Bianchi. Le invieremo a breve una copia del suo contratto via email,2023-05-11T10:20:00,true,31a86681-ec74-40f9-88a0-c6fd258df424
+Laura Bianchi,Grazie mille per la disponibilità,2023-05-11T11:30:00,false,31a86681-ec74-40f9-88a0-c6fd258df424
+Support Team,Buongiorno Sig. Verdi. Per il problema al motore è necessario portare il veicolo presso una delle nostre officine,2023-05-12T09:15:00,true,f37722e4-5661-4510-8c3c-c198a25b1505
+Giovanni Verdi,Quale officina mi consigliate nella zona di Milano?,2023-05-12T10:30:00,false,f37722e4-5661-4510-8c3c-c198a25b1505
+Support Team,A Milano può rivolgersi all'officina di Via Meccanica 123,2023-05-12T11:45:00,true,f37722e4-5661-4510-8c3c-c198a25b1505
+Support Team,Gentile Sig.ra Neri. Abbiamo prenotato il cambio gomme per il 20/05/2023,2023-05-13T14:10:00,true,0907c05b-1494-426c-90cb-b15debfbb41e
+Support Team,Sig. Gialli. Abbiamo verificato la fattura e effettivamente c'è un errore. Provvederemo a emettere una nota di credito,2023-05-14T16:25:00,true,ca937758-425a-4b9f-a79c-2c8f1ead9412
+Paolo Gialli,Grazie per la verifica. Attendo la nota di credito,2023-05-14T17:40:00,false,ca937758-425a-4b9f-a79c-2c8f1ead9412

@@ -1,0 +1,11 @@
+ordine,driver_id,nome_driver,marca,modello,fornitore,data_ordine,consegnata
+ORD-2023-001,0243a159-d3ea-406a-a278-a5a1ad32be4d,Marco Rossi,Volkswagen,Golf,AutoSeller,2023-01-10,true
+ORD-2023-003,371e425c-85ad-46b7-a686-ca2f226c6eb0,Giovanni Verdi,Audi,A3,LuxuryCars,2023-01-20,false
+ORD-2023-004,a4bd4646-7c23-4f6c-bfc0-62922bd61f31,Anna Neri,Ford,Focus,AutoSeller,2023-02-05,true
+ORD-2023-005,4509adb7-2034-42bc-a418-82fb5b43ff35,Paolo Gialli,BMW,Serie 1,PremiumAuto,2023-02-10,false
+ORD-2023-006,0795acf8-c48a-4f90-9d3c-20bc7357d42d,Francesca Marroni,Mercedes,Classe A,LuxuryCars,2023-02-20,false
+ORD-2023-007,b3c6ad7e-a023-4b7d-beda-e16c6445fa8c,Roberto Viola,Fiat,500,ItalianMotors,2023-03-01,true
+ORD-2023-008,ea12b06d-85b3-4a0f-aa80-b6781eb7c421,Elena Azzurri,Renault,Clio,CarWorld,2023-03-15,true
+ORD-2023-009,cdac9fa8-77d2-4389-901a-dd9b674f7cea,Davide Rosa,Hyundai,i20,GlobalAuto,2023-03-25,false
+ORD-2023-010,49101eef-54ed-4543-b89b-8e233ba225dc,Martina Grigi,Peugeot,208,FrenchCars,2023-04-10,false
+ORD-2023-011,38493cd2-81f6-4894-86e0-40728981b9fc,Luigi Celesti,Volkswagen,Polo,AutoSeller,2023-04-20,false

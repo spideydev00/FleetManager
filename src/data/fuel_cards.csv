@@ -1,0 +1,6 @@
+targa,nome_driver,societa,data_richiesta,alimentazione,stato,referente,driver_id
+AB123CD,Marco Rossi,TechCorp,2022-01-20,Benzina,Non arrivata,Carlo Cracco,0243a159-d3ea-406a-a278-a5a1ad32be4d
+BC234DE,Francesca Marroni,MediaGroup,2022-02-25,Ibrido,In attesa,Joe Pesci,0795acf8-c48a-4f90-9d3c-20bc7357d42d
+CD345EF,Giovanni Verdi,FinanceSPA,2022-03-15,Diesel,Arrivata,Alex Raita,371e425c-85ad-46b7-a686-ca2f226c6eb0
+DE456FG,Anna Neri,GlobalHR,2022-04-12,Benzina,Non arrivata,Anna Pepe,a4bd4646-7c23-4f6c-bfc0-62922bd61f31
+EF567GH,Paolo Gialli,SalesCorp,2022-05-18,Diesel,In attesa,Paolo Bonolis,4509adb7-2034-42bc-a418-82fb5b43ff35

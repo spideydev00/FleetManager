@@ -1,0 +1,5 @@
+ordine_id,ordine_numero,driver_nome,veicolo,data_consegna,data_completamento,stato,completato_automaticamente
+5f76e233-760e-4318-b673-bcd9c5b85e9d,ORD-2023-001,Marco Rossi,Volkswagen Golf,2023-02-15,2023-02-15,completed,false
+e36ad9b0-3a10-4962-b2f9-b2196aca965d,ORD-2023-002,Laura Bianchi,Toyota Yaris,2023-02-20,2023-02-20,completed,true
+391ae771-a86f-43a4-826d-4a813df65b74,ORD-2023-003,Giovanni Verdi,Audi A3,2023-03-01,2023-03-02,completed,false
+9a127523-76d1-41d7-9f5b-80c05cf131de,ORD-2023-004,Anna Neri,Ford Focus,2023-03-10,2023-03-12,completed,false

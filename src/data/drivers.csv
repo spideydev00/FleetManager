@@ -1,0 +1,13 @@
+nome,cognome,centro_costo,societa,noleggiatore,marca,modello,targa,alimentazione,emissioni,inizio_contratto,scadenza_contratto,canone_mensile,km_contrattuali
+Marco,Rossi,IT Department,TechCorp,Avis,Volkswagen,Golf,AB123CD,Benzina,Euro 6,2022-01-15,2025-01-14,350,15000
+Laura,Bianchi,Marketing,MediaGroup,Europcar,Toyota,Yaris,BC234DE,Ibrido,Euro 6,2022-02-20,2025-02-19,300,12000
+Giovanni,Verdi,Finance,FinanceSPA,Hertz,Audi,A3,CD345EF,Diesel,Euro 5,2022-03-10,2025-03-09,400,18000
+Anna,Neri,HR,GlobalHR,Sixt,Ford,Focus,DE456FG,Benzina,Euro 6,2022-04-05,2025-04-04,320,15000
+Paolo,Gialli,Sales,SalesCorp,Maggiore,BMW,Serie 1,EF567GH,Diesel,Euro 6,2022-05-12,2025-05-11,450,20000
+Francesca,Marroni,Operations,OpsCo,Avis,Mercedes,Classe A,FG678HI,Ibrido,Euro 6,2022-06-18,2025-06-17,480,18000
+Roberto,Viola,Logistics,LogiTech,Europcar,Fiat,500,GH789IJ,Elettrico,Zero,2022-07-22,2025-07-21,280,10000
+Elena,Azzurri,Customer Service,ServiCo,Hertz,Renault,Clio,HI890JK,Benzina,Euro 6,2022-08-30,2025-08-29,290,12000
+Davide,Rosa,Product,ProdTech,Sixt,Hyundai,i20,IJ901KL,Diesel,Euro 6,2022-09-14,2025-09-13,310,15000
+Martina,Grigi,R&D,ResearchInc,Maggiore,Peugeot,208,JK012LM,Benzina,Euro 6,2022-10-20,2025-10-19,300,12000
+Luigi,Celesti,Management,MgmtCorp,Avis,Volkswagen,Polo,KL123MN,Diesel,Euro 6,2022-11-05,2025-11-04,320,15000
+Alessia,Arancio,IT Support,TechSup,Europcar,Seat,Ibiza,LM234NO,Benzina,Euro 6,2022-12-10,2025-12-09,290,12000

@@ -1,0 +1,11 @@
+nome,email,categoria,titolo,messaggio,priorita,stato,data_creazione
+Marco Rossi,marco.rossi@example.com,Problemi Tecnici,Problema accesso app,Non riesco ad accedere all'applicazione mobile,Alta,Aperto,2023-05-10
+Laura Bianchi,laura.bianchi@example.com,Richiesta Informazioni,Informazioni su contratto,Vorrei informazioni sul mio contratto di noleggio,Media,In Lavorazione,2023-05-11
+Giovanni Verdi,giovanni.verdi@example.com,Problemi Veicolo,Problemi con l'auto,La mia auto ha un problema al motore,Alta,Aperto,2023-05-12
+Anna Neri,anna.neri@example.com,Richiesta Servizi,Richiesta cambio gomme,Vorrei prenotare un cambio gomme,Bassa,In Lavorazione,2023-05-13
+Paolo Gialli,paolo.gialli@example.com,Fatturazione,Problema con ultima fattura,Ho riscontrato un errore nell'ultima fattura ricevuta,Media,Aperto,2023-05-14
+Francesca Marroni,francesca.marroni@example.com,Problemi Tecnici,App non funziona,L'app si blocca quando provo ad aprire la sezione documenti,Media,In Lavorazione,2023-05-15
+Roberto Viola,roberto.viola@example.com,Richiesta Informazioni,Informazioni sui servizi,Vorrei informazioni sui servizi inclusi nel mio noleggio,Bassa,Risolto,2023-05-16
+Elena Azzurri,elena.azzurri@example.com,Problemi Veicolo,Spia accesa,Si è accesa una spia sul cruscotto,Alta,In Lavorazione,2023-05-17
+Davide Rosa,davide.rosa@example.com,Fatturazione,Mancata ricezione fattura,Non ho ricevuto la fattura di maggio,Media,Aperto,2023-05-18
+Martina Grigi,martina.grigi@example.com,Richiesta Servizi,Prenotazione manutenzione,Vorrei prenotare la manutenzione ordinaria,Bassa,Risolto,2023-05-19

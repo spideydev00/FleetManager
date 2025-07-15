@@ -1,0 +1,11 @@
+role,nome,email,azienda,telefono,data_creazione,ultimo_accesso
+user,John Doe,john.doe@example.com,Acme Inc,+39123456789,2023-01-15,2023-06-10
+manager,Mary Smith,mary.smith@example.com,Tech Solutions,+39234567890,2023-01-20,2023-06-12
+creatore,Robert Jones,robert.jones@example.com,Digital Media,+39345678901,2023-01-25,2023-06-11
+user,Laura Brown,laura.brown@example.com,Finance Group,,2023-02-01,2023-06-09
+manager,Mike Wilson,mike.wilson@example.com,Auto Services,+39456789012,2023-02-05,2023-06-08
+user,Jennifer Lee,jennifer.lee@example.com,,,2023-02-10,2023-06-07
+user,David Miller,david.miller@example.com,Retail Solutions,+39567890123,2023-02-15,2023-06-06
+manager,Sarah Clark,sarah.clark@example.com,Global Transport,+39678901234,2023-02-20,2023-06-05
+creatore,James Walker,james.walker@example.com,IT Consulting,+39789012345,2023-02-25,2023-06-04
+user,Emily Taylor,emily.taylor@example.com,Healthcare Inc,+39890123456,2023-03-01,2023-06-03

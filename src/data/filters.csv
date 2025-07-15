@@ -1,0 +1,14 @@
+field,operator,value
+nome,equals,Marco Rossi
+dataConsegna,greaterThan,2023-01-01
+marca,contains,Volkswagen
+canoneMensile,lessThan,400
+alimentazione,equals,Diesel
+stato,equals,pending
+categoria,contains,Problemi
+priorita,equals,Alta
+targa,startsWith,AB
+dataOrdine,between,2023-01-01|2023-03-31
+scadenzaContratto,lessThan,2024-01-01
+emissioni,equals,Euro 6
+dataCreazione,greaterThan,2023-01-01

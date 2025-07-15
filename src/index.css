@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply antialiased;
+  overflow-x: hidden; /* Previene lo scrolling orizzontale dell'intera pagina */
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Custom styles for date input calendar icon */
+input[type="date"] {
+  position: relative;
+}
+
+/* Light mode - black calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+  cursor: pointer;
+}
+
+/* Dark mode - white calendar icon */
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"].dark-calendar::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Firefox support */
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: invert(0);
+  cursor: pointer;
+}
+
+.dark input[type="date"]::-moz-calendar-picker-indicator,
+input[type="date"].dark-calendar::-moz-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
