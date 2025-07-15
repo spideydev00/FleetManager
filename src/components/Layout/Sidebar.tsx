@@ -1,4 +1,5 @@
 import React from "react";
+import { HelpCircle } from "lucide-react";
 import { User } from "../../entities/types";
 
 interface MenuItem {
@@ -34,12 +35,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   currentUser,
   showOrdersSubmenu,
   setShowOrdersSubmenu,
-  showSupportSubmenu,
-  setShowSupportSubmenu,
   activeOrderTab,
   setActiveOrderTab,
-  activeSupportTab,
-  setActiveSupportTab,
 }) => {
   const handleMenuClick = (
     menuId: string,
@@ -55,7 +52,6 @@ const Sidebar: React.FC<SidebarProps> = ({
       if (menuId !== "orders" && menuId !== "inCorso" && menuId !== "daFare") {
         setShowOrdersSubmenu(false);
       }
-      // RIMOSSO: setShowSupportSubmenu(false);
     }
   };
 
@@ -64,7 +60,6 @@ const Sidebar: React.FC<SidebarProps> = ({
     setActiveSection(tabId);
   };
 
-  // RIMOSSO: const handleSupportTabClick = (tabId: string) => { ... }
 
   if (!currentUser) return null;
 
@@ -111,12 +106,10 @@ const Sidebar: React.FC<SidebarProps> = ({
         <ul className="space-y-1">
           {menuItems
             .filter((item) => {
-              // Mostra tutto tranne "Database Utenti" agli utenti normali
-              // "Database Utenti" è visibile solo a chi ha ruolo "Creatore"
               if (item.id === "database") {
                 return currentUser?.role === "Creatore";
               }
-              return true; // Mostra tutte le altre voci a tutti gli utenti indipendentemente dal ruolo
+              return true;
             })
             .map((item) => (
               <li key={item.id}>
@@ -127,7 +120,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                       item.id,
                       item.hasSubmenu,
                       item.id === "orders" ? setShowOrdersSubmenu : undefined
-                      // RIMOSSO: item.id === "support" ? setShowSupportSubmenu : undefined
                     )
                   }
                   className={`tars-menu-item w-full flex items-center px-3 py-2 rounded-lg transition-all ${activeSection === item.id ||
@@ -147,7 +139,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                   {item.hasSubmenu && item.id === "orders" && (
                     <span>{showOrdersSubmenu ? "▼" : "▶"}</span>
                   )}
-                  {/* RIMOSSO: {item.hasSubmenu && item.id === "support" ...} */}
                 </button>
 
                 {/* Submenu for Orders */}
@@ -172,10 +163,26 @@ const Sidebar: React.FC<SidebarProps> = ({
                     ))}
                   </ul>
                 )}
-
-                {/* RIMOSSO: Submenu for Support */}
               </li>
             ))}
+
+          {/* FAQ menu item - separate from menuItems array */}
+          <li>
+            <button
+              onClick={() => setActiveSection("faqs")}
+              className={`tars-menu-item w-full flex items-center px-3 py-2 rounded-lg transition-all ${activeSection === "faqs"
+                  ? isDarkMode
+                    ? "bg-blue-900 text-blue-100"
+                    : "bg-blue-100 text-blue-800"
+                  : isDarkMode
+                    ? "text-gray-300 hover:bg-gray-700"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+            >
+              <HelpCircle className="w-5 h-5 mr-3" />
+              <span className="flex-1 text-left">FAQ & Supporto</span>
+            </button>
+          </li>
         </ul>
       </nav>
 

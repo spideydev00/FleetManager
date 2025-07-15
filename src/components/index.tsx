@@ -16,6 +16,7 @@ import DriversManager from "./DriversManager";
 import OrdersManager from "./OrdersManager";
 import FuelCardsManager from "./FuelCardsManager";
 import ReportsManager from "./ReportsManager";
+import FAQs from "./FAQs";
 import LoginForm from "./Auth/LoginForm";
 import Sidebar from "./Layout/Sidebar";
 import Header from "./Layout/Header";
@@ -23,13 +24,10 @@ import UserProfile from "./Auth/UserProfile";
 
 import {
   User,
-  UserRole,
   Driver,
   Order,
   OrderToMake,
   FuelCard,
-  Message,
-  FAQ,
 } from "../entities/types";
 
 const FleetManagement: React.FC = () => {
@@ -548,7 +546,8 @@ const FleetManagement: React.FC = () => {
       case "reports":
         return <ReportsManager drivers={drivers} isDarkMode={isDarkMode} />;
 
-      case "faq":
+      case "faqs":
+        return <FAQs isDarkMode={isDarkMode} />;
 
       default:
         return (

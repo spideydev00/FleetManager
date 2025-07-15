@@ -44,7 +44,7 @@ const FilterSelector: React.FC<FilterSelectorProps> = ({
                     }`}
             >
                 <Plus className="w-4 h-4" />
-                <span>Aggiungi Filtro</span>
+                <span>Seleziona Campo</span>
             </button>
 
             {showDropdown && (

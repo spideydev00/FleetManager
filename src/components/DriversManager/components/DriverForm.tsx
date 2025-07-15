@@ -47,8 +47,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
           <button
             onClick={onClose}
             className={`p-2 rounded-lg transition-colors ${isDarkMode
-                ? "hover:bg-gray-700 text-gray-300"
-                : "hover:bg-gray-100 text-gray-600"
+              ? "hover:bg-gray-700 text-gray-300"
+              : "hover:bg-gray-100 text-gray-600"
               }`}
           >
             <X className="w-5 h-5" />
@@ -73,8 +73,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                     value={newDriver.nomeDriver || ""}
                     onChange={(e) => handleChange("nomeDriver", e.target.value)}
                     className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                        ? "bg-gray-600 border-gray-500 text-white"
-                        : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-gray-600 border-gray-500 text-white"
+                      : "bg-white border-gray-300 text-gray-800"
                       } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="Inserisci il nome del driver"
                   />
@@ -88,8 +88,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                     value={newDriver.centroCosto || ""}
                     onChange={(e) => handleChange("centroCosto", e.target.value)}
                     className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                        ? "bg-gray-600 border-gray-500 text-white"
-                        : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-gray-600 border-gray-500 text-white"
+                      : "bg-white border-gray-300 text-gray-800"
                       } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="Inserisci il centro di costo"
                   />
@@ -112,8 +112,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                     value={newDriver.societa || ""}
                     onChange={(e) => handleChange("societa", e.target.value)}
                     className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                        ? "bg-gray-600 border-gray-500 text-white"
-                        : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-gray-600 border-gray-500 text-white"
+                      : "bg-white border-gray-300 text-gray-800"
                       } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="Inserisci la società"
                   />
@@ -127,8 +127,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                     value={newDriver.noleggiatore || ""}
                     onChange={(e) => handleChange("noleggiatore", e.target.value)}
                     className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                        ? "bg-gray-600 border-gray-500 text-white"
-                        : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-gray-600 border-gray-500 text-white"
+                      : "bg-white border-gray-300 text-gray-800"
                       } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="Inserisci il noleggiatore"
                   />
@@ -151,8 +151,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                     value={newDriver.targa || ""}
                     onChange={(e) => handleChange("targa", e.target.value)}
                     className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                        ? "bg-gray-600 border-gray-500 text-white"
-                        : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-gray-600 border-gray-500 text-white"
+                      : "bg-white border-gray-300 text-gray-800"
                       } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="Inserisci la targa"
                   />
@@ -160,30 +160,30 @@ const DriverForm: React.FC<DriverFormProps> = ({
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
-                      Marca
+                      Marca *
                     </label>
                     <input
                       type="text"
                       value={newDriver.marca || ""}
                       onChange={(e) => handleChange("marca", e.target.value)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
+                        ? "bg-gray-600 border-gray-500 text-white"
+                        : "bg-white border-gray-300 text-gray-800"
                         } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="Marca veicolo"
                     />
                   </div>
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
-                      Modello
+                      Modello *
                     </label>
                     <input
                       type="text"
                       value={newDriver.modello || ""}
                       onChange={(e) => handleChange("modello", e.target.value)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
+                        ? "bg-gray-600 border-gray-500 text-white"
+                        : "bg-white border-gray-300 text-gray-800"
                         } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="Modello veicolo"
                     />
@@ -192,15 +192,15 @@ const DriverForm: React.FC<DriverFormProps> = ({
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
-                      Alimentazione
+                      Alimentazione *
                     </label>
                     <input
                       type="text"
                       value={newDriver.alimentazione || ""}
                       onChange={(e) => handleChange("alimentazione", e.target.value)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
+                        ? "bg-gray-600 border-gray-500 text-white"
+                        : "bg-white border-gray-300 text-gray-800"
                         } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="Tipo di alimentazione"
                     />
@@ -214,8 +214,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       value={newDriver.emissioni || ""}
                       onChange={(e) => handleChange("emissioni", e.target.value)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
+                        ? "bg-gray-600 border-gray-500 text-white"
+                        : "bg-white border-gray-300 text-gray-800"
                         } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="Emissioni g/km"
                     />
@@ -240,9 +240,9 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       value={newDriver.inizioContratto || ""}
                       onChange={(e) => handleChange("inizioContratto", e.target.value)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
-                        } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                        ? "bg-gray-700 border-gray-600 text-gray-100 dark-calendar"
+                        : "bg-white border-gray-300 text-gray-900"
+                        } focus:ring-2 focus:ring-blue-500`}
                     />
                   </div>
                   <div>
@@ -254,9 +254,9 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       value={newDriver.scadenzaContratto || ""}
                       onChange={(e) => handleChange("scadenzaContratto", e.target.value)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
-                        } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                        ? "bg-gray-700 border-gray-600 text-gray-100 dark-calendar"
+                        : "bg-white border-gray-300 text-gray-900"
+                        } focus:ring-2 focus:ring-blue-500`}
                     />
                   </div>
                 </div>
@@ -271,8 +271,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       value={newDriver.canoneMensile || ""}
                       onChange={(e) => handleChange("canoneMensile", parseFloat(e.target.value) || 0)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
+                        ? "bg-gray-600 border-gray-500 text-white"
+                        : "bg-white border-gray-300 text-gray-800"
                         } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="0.00"
                     />
@@ -286,8 +286,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       value={newDriver.kmContrattuali || ""}
                       onChange={(e) => handleChange("kmContrattuali", parseInt(e.target.value) || 0)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
-                          ? "bg-gray-600 border-gray-500 text-white"
-                          : "bg-white border-gray-300 text-gray-800"
+                        ? "bg-gray-600 border-gray-500 text-white"
+                        : "bg-white border-gray-300 text-gray-800"
                         } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                       placeholder="0"
                     />
@@ -303,8 +303,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
               onClick={onSave}
               disabled={isLoading}
               className={`px-4 py-2 rounded-lg flex items-center gap-2 ${isDarkMode
-                  ? "bg-blue-600 hover:bg-blue-700 text-white"
-                  : "bg-blue-500 hover:bg-blue-600 text-white"
+                ? "bg-blue-600 hover:bg-blue-700 text-white"
+                : "bg-blue-500 hover:bg-blue-600 text-white"
                 } transition-colors disabled:opacity-50`}
             >
               <Save className="w-4 h-4" />
@@ -313,8 +313,8 @@ const DriverForm: React.FC<DriverFormProps> = ({
             <button
               onClick={onClose}
               className={`px-4 py-2 rounded-lg ${isDarkMode
-                  ? "bg-gray-600 hover:bg-gray-700 text-white"
-                  : "bg-gray-500 hover:bg-gray-600 text-white"
+                ? "bg-gray-600 hover:bg-gray-700 text-white"
+                : "bg-gray-500 hover:bg-gray-600 text-white"
                 } transition-colors`}
             >
               Annulla
