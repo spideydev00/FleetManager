@@ -1,6 +1,6 @@
 import React from "react";
 import { Edit, Trash2 } from "lucide-react";
-import { OrderToMake } from "../../../types";
+import { OrderToMake } from "../../../entities/types";
 
 interface OrdersToMakeTableProps {
   ordersToMake: OrderToMake[];
@@ -51,14 +51,12 @@ const OrdersToMakeTable: React.FC<OrdersToMakeTableProps> = ({
 }) => {
   return (
     <div
-      className={`${
-        isDarkMode ? "bg-gray-800 border border-gray-700" : "bg-white"
-      } rounded-lg shadow overflow-hidden`}
+      className={`${isDarkMode ? "bg-gray-800 border border-gray-700" : "bg-white"
+        } rounded-lg shadow overflow-hidden`}
     >
       <table
-        className={`min-w-full divide-y ${
-          isDarkMode ? "divide-gray-700" : "divide-gray-200"
-        }`}
+        className={`min-w-full divide-y ${isDarkMode ? "divide-gray-700" : "divide-gray-200"
+          }`}
       >
         <thead className={`${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}>
           <tr>
@@ -73,51 +71,44 @@ const OrdersToMakeTable: React.FC<OrdersToMakeTableProps> = ({
               />
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               Driver
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               Scelta Auto
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               RDA
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               Offerte
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               Verifica
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               Firme
             </th>
             <th
-              className={`px-4 py-3 text-left text-xs font-medium ${
-                isDarkMode ? "text-gray-400" : "text-gray-500"
-              } uppercase tracking-wider`}
+              className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                } uppercase tracking-wider`}
             >
               Stato Complessivo
             </th>
@@ -125,11 +116,10 @@ const OrdersToMakeTable: React.FC<OrdersToMakeTableProps> = ({
           </tr>
         </thead>
         <tbody
-          className={`${
-            isDarkMode
+          className={`${isDarkMode
               ? "bg-gray-800 divide-gray-700"
               : "bg-white divide-gray-200"
-          } divide-y`}
+            } divide-y`}
         >
           {ordersToMake.map((order) => (
             <tr
@@ -144,9 +134,8 @@ const OrdersToMakeTable: React.FC<OrdersToMakeTableProps> = ({
                 />
               </td>
               <td
-                className={`px-4 py-4 whitespace-nowrap text-sm ${
-                  isDarkMode ? "text-gray-200" : "text-gray-800"
-                }`}
+                className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-200" : "text-gray-800"
+                  }`}
               >
                 {order.nome_driver}
               </td>
@@ -172,18 +161,16 @@ const OrdersToMakeTable: React.FC<OrdersToMakeTableProps> = ({
                 <div className="flex space-x-2 justify-end">
                   <button
                     onClick={() => onEditOrder(order)}
-                    className={`p-1 rounded-full ${
-                      isDarkMode ? "hover:bg-gray-600" : "hover:bg-gray-200"
-                    }`}
+                    className={`p-1 rounded-full ${isDarkMode ? "hover:bg-gray-600" : "hover:bg-gray-200"
+                      }`}
                     title="Modifica ordine da fare"
                   >
                     <Edit className="w-5 h-5 text-amber-500" />
                   </button>
                   <button
                     onClick={() => onDeleteOrder(order.id)}
-                    className={`p-1 rounded-full ${
-                      isDarkMode ? "hover:bg-gray-600" : "hover:bg-gray-200"
-                    }`}
+                    className={`p-1 rounded-full ${isDarkMode ? "hover:bg-gray-600" : "hover:bg-gray-200"
+                      }`}
                     title="Elimina ordine da fare"
                   >
                     <Trash2 className="w-5 h-5 text-red-500" />
@@ -196,9 +183,8 @@ const OrdersToMakeTable: React.FC<OrdersToMakeTableProps> = ({
             <tr>
               <td
                 colSpan={8}
-                className={`px-4 py-4 text-center text-sm ${
-                  isDarkMode ? "text-gray-400" : "text-gray-500"
-                }`}
+                className={`px-4 py-4 text-center text-sm ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                  }`}
               >
                 Nessun ordine da fare trovato con i filtri attuali
               </td>

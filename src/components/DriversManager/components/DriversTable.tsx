@@ -1,5 +1,5 @@
 import React from "react";
-import { Driver } from "../../../types";
+import { Driver } from "../../../entities/types";
 import { Eye, Edit, Trash2, Car } from "lucide-react";
 
 interface DriversTableProps {

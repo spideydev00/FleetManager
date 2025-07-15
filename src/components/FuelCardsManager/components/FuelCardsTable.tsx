@@ -1,6 +1,6 @@
 import React from "react";
 import { Edit, Trash2 } from "lucide-react";
-import { FuelCard } from "../../../types";
+import { FuelCard } from "../../../entities/types";
 
 interface FuelCardsTableProps {
   fuelCards: FuelCard[];

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FuelCard, Driver } from "../../types";
+import { FuelCard, Driver } from "../../entities/types";
 import { fuelCardsService } from "./services/fuelCardsService";
 import FuelCardsActionBar from "./components/FuelCardsActionBar";
 import FuelCardsFilterBar from "./components/FuelCardsFilterBar";

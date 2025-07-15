@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Driver, Order, FuelCard } from "../../../types";
+import { Driver, Order, FuelCard } from "../../../entities/types";
 import { dashboardService } from "../services/dashboardService";
 
 export const useDashboard = () => {

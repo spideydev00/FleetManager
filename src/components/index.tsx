@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Car, CreditCard, BarChart3, FileText } from "lucide-react";
 import * as XLSX from "xlsx";
 
-import { supabase } from "../supabase";
+import { supabase } from "../supabase/supabase";
 
 // Import services
 import { authService } from "./Auth/services/authService";
@@ -30,7 +30,7 @@ import {
   FuelCard,
   Message,
   FAQ,
-} from "../types";
+} from "../entities/types";
 
 const FleetManagement: React.FC = () => {
   // Authentication states
@@ -599,9 +599,9 @@ const FleetManagement: React.FC = () => {
             {/* Logo */}
             <div className="flex justify-start">
               <img
-                src="/src/assets/images/tars-logo.png"
+                src="/tars-logo.png"
                 alt="TARS Logo"
-                className="h-64 w64 object-contain"
+                className="h-64 w-64 object-contain"
                 onError={(e) => {
                   // Nasconde l'immagine se non viene trovata
                   e.currentTarget.style.display = 'none';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Driver } from "../../types";
+import { Driver } from "../../entities/types";
 import * as XLSX from "xlsx";
-import { supabase } from "../../supabase";
+import { supabase } from "../../supabase/supabase";
 import DriverDetailModal from "./components/DriverDetailModal";
 import DriverEditModal from "./components/DriverEditModal";
 import DriversActionBar from "./components/DriversActionBar";
@@ -115,14 +115,14 @@ const DriversManager: React.FC<DriversManagerProps> = ({
       if (driverData) {
         const attachments = attachmentsData
           ? attachmentsData.map((att) => ({
-              id: att.id,
-              driverId: att.driver_id,
-              nome: att.nome,
-              tipo: att.tipo,
-              dimensione: att.dimensione,
-              dataCaricamento: att.data_caricamento || new Date().toISOString(),
-              url: att.url,
-            }))
+            id: att.id,
+            driverId: att.driver_id,
+            nome: att.nome,
+            tipo: att.tipo,
+            dimensione: att.dimensione,
+            dataCaricamento: att.data_caricamento || new Date().toISOString(),
+            url: att.url,
+          }))
           : [];
 
         const completeDriver: Driver & { allegati: any[] } = {
@@ -219,12 +219,12 @@ const DriversManager: React.FC<DriversManagerProps> = ({
               // Handle dates - more robust date parsing
               const parseExcelDate = (dateValue: any) => {
                 if (!dateValue) return new Date();
-                
+
                 // If it's already a valid Date object
                 if (dateValue instanceof Date && !isNaN(dateValue.getTime())) {
                   return dateValue;
                 }
-                
+
                 // If it's a string in DD/MM/YYYY format
                 if (typeof dateValue === "string" && dateValue.includes("/")) {
                   const parts = dateValue.split("/");
@@ -234,14 +234,14 @@ const DriversManager: React.FC<DriversManagerProps> = ({
                     return new Date(`${month}/${day}/${year}`);
                   }
                 }
-                
+
                 // If it's an Excel serial number
                 if (typeof dateValue === "number" && dateValue > 25567) { // Excel dates after 1970
                   const excelEpoch = new Date(1900, 0, 1);
                   const msPerDay = 24 * 60 * 60 * 1000;
                   return new Date(excelEpoch.getTime() + (dateValue - 2) * msPerDay);
                 }
-                
+
                 // Try direct parsing as fallback
                 try {
                   const parsed = new Date(dateValue);
@@ -567,35 +567,33 @@ const DriversManager: React.FC<DriversManagerProps> = ({
       {/* Operation message toast */}
       {operationError && (
         <div
-          className={`p-4 rounded-lg ${
-            operationError.toLowerCase().includes("success") ||
+          className={`p-4 rounded-lg ${operationError.toLowerCase().includes("success") ||
             operationError.toLowerCase().includes("completat") ||
             operationError.toLowerCase().includes("aggiornato con")
-              ? isDarkMode
-                ? "bg-green-900"
-                : "bg-green-100"
-              : isDarkMode
+            ? isDarkMode
+              ? "bg-green-900"
+              : "bg-green-100"
+            : isDarkMode
               ? "bg-red-900"
               : "bg-red-100"
-          }`}
+            }`}
         >
           <div className="flex">
             <div
-              className={`flex-shrink-0 ${
-                operationError.toLowerCase().includes("success") ||
+              className={`flex-shrink-0 ${operationError.toLowerCase().includes("success") ||
                 operationError.toLowerCase().includes("completat") ||
                 operationError.toLowerCase().includes("aggiornato con")
-                  ? isDarkMode
-                    ? "text-green-300"
-                    : "text-green-500"
-                  : isDarkMode
+                ? isDarkMode
+                  ? "text-green-300"
+                  : "text-green-500"
+                : isDarkMode
                   ? "text-red-300"
                   : "text-red-500"
-              }`}
+                }`}
             >
               {operationError.toLowerCase().includes("success") ||
-              operationError.toLowerCase().includes("completat") ||
-              operationError.toLowerCase().includes("aggiornato con") ? (
+                operationError.toLowerCase().includes("completat") ||
+                operationError.toLowerCase().includes("aggiornato con") ? (
                 <Check className="h-5 w-5" />
               ) : (
                 <X className="h-5 w-5" />
@@ -603,17 +601,16 @@ const DriversManager: React.FC<DriversManagerProps> = ({
             </div>
             <div className="ml-3">
               <p
-                className={`text-sm ${
-                  operationError.toLowerCase().includes("success") ||
+                className={`text-sm ${operationError.toLowerCase().includes("success") ||
                   operationError.toLowerCase().includes("completat") ||
                   operationError.toLowerCase().includes("aggiornato con")
-                    ? isDarkMode
-                      ? "text-green-300"
-                      : "text-green-700"
-                    : isDarkMode
+                  ? isDarkMode
+                    ? "text-green-300"
+                    : "text-green-700"
+                  : isDarkMode
                     ? "text-red-300"
                     : "text-red-700"
-                }`}
+                  }`}
               >
                 {operationError}
               </p>

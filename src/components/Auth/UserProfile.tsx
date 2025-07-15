@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
-import { User, UserRole } from "../../types";
+import { User, UserRole } from "../../entities/types";
 
 interface UserProfileProps {
   currentUser: User | null;

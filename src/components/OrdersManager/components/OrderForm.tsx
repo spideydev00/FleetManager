@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Search, Trash2, X } from "lucide-react";
-import { Driver, Order } from "../../../types";
+import { Driver, Order } from "../../../entities/types";
 import { ordersService } from "../services/ordersService";
 import { getEmissionsNumericValue } from "../../../utils/getEmissionsAsNumber";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { X, Save, Loader2 } from "lucide-react";
-import { FuelCard } from "../../../types";
+import { FuelCard } from "../../../entities/types";
 
 interface FuelCardEditModalProps {
   isVisible: boolean;
@@ -41,8 +41,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
           <button
             onClick={onClose}
             className={`${isDarkMode
-                ? "text-gray-400 hover:text-gray-300"
-                : "text-gray-500 hover:text-gray-700"
+              ? "text-gray-400 hover:text-gray-300"
+              : "text-gray-500 hover:text-gray-700"
               }`}
           >
             <X className="w-6 h-6" />
@@ -61,8 +61,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             <input
               type="text"
               className={`px-3 py-2 border rounded-lg ${isDarkMode
-                  ? "bg-gray-600 border-gray-500 text-gray-300"
-                  : "bg-gray-100 border-gray-300 text-gray-600"
+                ? "bg-gray-600 border-gray-500 text-gray-300"
+                : "bg-gray-100 border-gray-300 text-gray-600"
                 } cursor-not-allowed`}
               value={editingFuelCard.targa}
               readOnly
@@ -79,8 +79,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             <input
               type="text"
               className={`px-3 py-2 border rounded-lg ${isDarkMode
-                  ? "bg-gray-600 border-gray-500 text-gray-300"
-                  : "bg-gray-100 border-gray-300 text-gray-600"
+                ? "bg-gray-600 border-gray-500 text-gray-300"
+                : "bg-gray-100 border-gray-300 text-gray-600"
                 } cursor-not-allowed`}
               value={editingFuelCard.nome_driver}
               readOnly
@@ -97,8 +97,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             <input
               type="text"
               className={`px-3 py-2 border rounded-lg ${isDarkMode
-                  ? "bg-gray-600 border-gray-500 text-gray-300"
-                  : "bg-gray-100 border-gray-300 text-gray-600"
+                ? "bg-gray-600 border-gray-500 text-gray-300"
+                : "bg-gray-100 border-gray-300 text-gray-600"
                 } cursor-not-allowed`}
               value={editingFuelCard.societa}
               readOnly
@@ -115,8 +115,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             <input
               type="text"
               className={`px-3 py-2 border rounded-lg ${isDarkMode
-                  ? "bg-gray-600 border-gray-500 text-gray-300"
-                  : "bg-gray-100 border-gray-300 text-gray-600"
+                ? "bg-gray-600 border-gray-500 text-gray-300"
+                : "bg-gray-100 border-gray-300 text-gray-600"
                 } cursor-not-allowed`}
               value={editingFuelCard.alimentazione}
               readOnly
@@ -128,8 +128,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             type="date"
             placeholder="Data Richiesta"
             className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-                ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500 dark-calendar"
-                : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
+              ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500 dark-calendar"
+              : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
               }`}
             value={editingFuelCard.dataRichiesta}
             onChange={(e) =>
@@ -142,8 +142,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
 
           <select
             className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-                ? "bg-gray-700 border-gray-600 text-gray-200 focus:border-blue-500"
-                : "bg-white border-gray-300 text-gray-900 focus:border-transparent"
+              ? "bg-gray-700 border-gray-600 text-gray-200 focus:border-blue-500"
+              : "bg-white border-gray-300 text-gray-900 focus:border-transparent"
               }`}
             value={editingFuelCard.stato || "Non arrivata"}
             onChange={(e) =>
@@ -165,8 +165,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             type="text"
             placeholder="Referente"
             className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-                ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
-                : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
+              ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
+              : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
               }`}
             value={editingFuelCard.referente}
             onChange={(e) =>
@@ -183,8 +183,8 @@ const FuelCardEditModal: React.FC<FuelCardEditModalProps> = ({
             onClick={onClose}
             disabled={isLoading}
             className={`px-4 py-2 rounded-lg ${isDarkMode
-                ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               } ${isLoading ? "opacity-70 cursor-not-allowed" : ""}`}
           >
             Annulla

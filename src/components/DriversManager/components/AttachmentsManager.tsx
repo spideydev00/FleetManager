@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { FileText, Upload, Trash2, Loader2, X, Download, Check } from "lucide-react";
-import { Attachment, Driver } from "../../../types";
-import { supabase } from "../../../supabase";
+import { Attachment, Driver } from "../../../entities/types";
+import { supabase } from "../../../supabase/supabase";
 
 interface AttachmentsManagerProps {
   driver: Driver;
@@ -40,7 +40,7 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
     if (!event.target.files || event.target.files.length === 0) return;
 
     const file = event.target.files[0];
-    
+
     if (file.size > 10 * 1024 * 1024) {
       setUploadError("Il file è troppo grande. Dimensione massima: 10MB");
       return;
@@ -54,7 +54,7 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
       const timestamp = Date.now();
       const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
       const fileName = `driver-${driver.id}/${timestamp}_${sanitizedFileName}`;
-      
+
       const { data: storageData, error: storageError } = await supabase.storage
         .from("driver-documents")
         .upload(fileName, file, {
@@ -113,12 +113,12 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
     setIsDeleting(attachment.id);
     setUploadError(null);
     setUploadSuccess(null);
-    
+
     try {
       const timestamp = attachment.url.match(/(\d{13})/)?.[1];
       const sanitizedFileName = attachment.nome.replace(/[^a-zA-Z0-9.-]/g, '_');
       const fileName = `driver-${driver.id}/${timestamp}_${sanitizedFileName}`;
-      
+
       const { error: storageError } = await supabase.storage
         .from("driver-documents")
         .remove([fileName]);
@@ -150,7 +150,7 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
 
   const getFileIcon = (fileName: string, fileType: string) => {
     const extension = fileName.split('.').pop()?.toLowerCase();
-    
+
     if (fileType.includes('image/')) {
       return '🖼️';
     } else if (fileType.includes('pdf') || extension === 'pdf') {
@@ -180,14 +180,12 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
 
   return (
     <div
-      className={`mt-6 p-5 rounded-xl ${
-        isDarkMode ? "bg-gray-700" : "bg-gray-50"
-      }`}
+      className={`mt-6 p-5 rounded-xl ${isDarkMode ? "bg-gray-700" : "bg-gray-50"
+        }`}
     >
       <h3
-        className={`text-lg font-semibold mb-4 flex items-center gap-2 ${
-          isDarkMode ? "text-white" : "text-gray-800"
-        }`}
+        className={`text-lg font-semibold mb-4 flex items-center gap-2 ${isDarkMode ? "text-white" : "text-gray-800"
+          }`}
       >
         <FileText className="w-5 h-5" />
         Documenti allegati
@@ -205,11 +203,10 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
         <button
           onClick={() => fileInputRef.current?.click()}
           disabled={isUploading}
-          className={`px-4 py-2 rounded-lg flex items-center gap-2 ${
-            isDarkMode
-              ? "bg-blue-600 hover:bg-blue-700 text-white"
-              : "bg-blue-500 hover:bg-blue-600 text-white"
-          } transition-colors disabled:opacity-50`}
+          className={`px-4 py-2 rounded-lg flex items-center gap-2 ${isDarkMode
+            ? "bg-blue-600 hover:bg-blue-700 text-white"
+            : "bg-blue-500 hover:bg-blue-600 text-white"
+            } transition-colors disabled:opacity-50`}
         >
           {isUploading ? (
             <>
@@ -226,9 +223,8 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
 
         {uploadError && (
           <div
-            className={`mt-2 px-3 py-2 rounded-md ${
-              isDarkMode ? "bg-red-900 text-red-200" : "bg-red-100 text-red-800"
-            }`}
+            className={`mt-2 px-3 py-2 rounded-md ${isDarkMode ? "bg-red-900 text-red-200" : "bg-red-100 text-red-800"
+              }`}
           >
             <div className="flex items-center gap-2">
               <X className="w-4 h-4" />
@@ -239,9 +235,8 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
 
         {uploadSuccess && (
           <div
-            className={`mt-2 px-3 py-2 rounded-md ${
-              isDarkMode ? "bg-green-900 text-green-200" : "bg-green-100 text-green-800"
-            }`}
+            className={`mt-2 px-3 py-2 rounded-md ${isDarkMode ? "bg-green-900 text-green-200" : "bg-green-100 text-green-800"
+              }`}
           >
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4" />
@@ -256,11 +251,10 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
           {driver.allegati.map((doc) => (
             <div
               key={doc.id}
-              className={`flex items-center gap-4 p-4 rounded-xl border ${
-                isDarkMode
-                  ? "bg-gray-600 border-gray-500 hover:bg-gray-550"
-                  : "bg-white border-gray-200 hover:bg-gray-50"
-              } transition-all duration-200 hover:shadow-md`}
+              className={`flex items-center gap-4 p-4 rounded-xl border ${isDarkMode
+                ? "bg-gray-600 border-gray-500 hover:bg-gray-550"
+                : "bg-white border-gray-200 hover:bg-gray-50"
+                } transition-all duration-200 hover:shadow-md`}
             >
               <div className="text-2xl">
                 {getFileIcon(doc.nome, doc.tipo || '')}
@@ -268,17 +262,15 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
 
               <div className="flex-1 overflow-hidden">
                 <h4
-                  className={`font-medium truncate ${
-                    isDarkMode ? "text-white" : "text-gray-800"
-                  }`}
+                  className={`font-medium truncate ${isDarkMode ? "text-white" : "text-gray-800"
+                    }`}
                   title={doc.nome}
                 >
                   {doc.nome}
                 </h4>
                 <div
-                  className={`flex items-center gap-2 text-sm ${
-                    isDarkMode ? "text-gray-400" : "text-gray-500"
-                  }`}
+                  className={`flex items-center gap-2 text-sm ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                    }`}
                 >
                   <span>{formatFileSize(doc.dimensione)}</span>
                   <span>•</span>
@@ -289,11 +281,10 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
               <div className="flex gap-2">
                 <button
                   onClick={() => handleDownloadAttachment(doc)}
-                  className={`p-2 rounded-lg transition-colors ${
-                    isDarkMode
-                      ? "hover:bg-gray-500 text-blue-400 hover:text-blue-300"
-                      : "hover:bg-blue-50 text-blue-500 hover:text-blue-600"
-                  }`}
+                  className={`p-2 rounded-lg transition-colors ${isDarkMode
+                    ? "hover:bg-gray-500 text-blue-400 hover:text-blue-300"
+                    : "hover:bg-blue-50 text-blue-500 hover:text-blue-600"
+                    }`}
                   title="Scarica documento"
                 >
                   <Download className="w-4 h-4" />
@@ -301,11 +292,10 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
                 <button
                   onClick={() => handleDeleteAttachment(doc)}
                   disabled={isDeleting === doc.id}
-                  className={`p-2 rounded-lg transition-colors ${
-                    isDarkMode
-                      ? "hover:bg-gray-500 text-red-400 hover:text-red-300"
-                      : "hover:bg-red-50 text-red-500 hover:text-red-600"
-                  } disabled:opacity-50`}
+                  className={`p-2 rounded-lg transition-colors ${isDarkMode
+                    ? "hover:bg-gray-500 text-red-400 hover:text-red-300"
+                    : "hover:bg-red-50 text-red-500 hover:text-red-600"
+                    } disabled:opacity-50`}
                   title="Elimina documento"
                 >
                   {isDeleting === doc.id ? (
@@ -320,11 +310,10 @@ const AttachmentsManager: React.FC<AttachmentsManagerProps> = ({
         </div>
       ) : (
         <div
-          className={`p-8 text-center border-2 border-dashed rounded-xl ${
-            isDarkMode
-              ? "border-gray-600 text-gray-400 bg-gray-750"
-              : "border-gray-300 text-gray-500 bg-gray-25"
-          }`}
+          className={`p-8 text-center border-2 border-dashed rounded-xl ${isDarkMode
+            ? "border-gray-600 text-gray-400 bg-gray-750"
+            : "border-gray-300 text-gray-500 bg-gray-25"
+            }`}
         >
           <div className="text-4xl mb-3">📁</div>
           <p className="text-lg font-medium">Nessun documento allegato</p>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Driver, Order, FuelCard, User } from "../../types";
+import { Driver, Order, FuelCard, User } from "../../entities/types";
 import DashboardStats from "./components/DashboardStats";
 import DriversTable from "./components/DriversTable";
 

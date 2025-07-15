@@ -1,5 +1,5 @@
-import { supabase } from "../../../supabase";
-import { Driver, Attachment } from "../../../types";
+import { supabase } from "../../../supabase/supabase";
+import { Driver, Attachment } from "../../../entities/types";
 import { generateUUID } from "../../../utils/generateUuid";
 
 export interface DriversServiceInterface {

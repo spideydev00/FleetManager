@@ -1,6 +1,6 @@
 import React from "react";
 import { Search, Trash2, X } from "lucide-react";
-import { Driver, FuelCard } from "../../../types";
+import { Driver, FuelCard } from "../../../entities/types";
 
 interface FuelCardFormProps {
   isDarkMode: boolean;
@@ -52,8 +52,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
         <button
           onClick={onClose}
           className={`${isDarkMode
-              ? "text-gray-400 hover:text-gray-300"
-              : "text-gray-500 hover:text-gray-700"
+            ? "text-gray-400 hover:text-gray-300"
+            : "text-gray-500 hover:text-gray-700"
             }`}
         >
           <X className="w-5 h-5" />
@@ -72,8 +72,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           {selectedDriverData ? (
             <div
               className={`p-3 rounded-lg flex items-center justify-between ${isDarkMode
-                  ? "bg-gray-700 border border-gray-600"
-                  : "bg-gray-50 border border-gray-200"
+                ? "bg-gray-700 border border-gray-600"
+                : "bg-gray-50 border border-gray-200"
                 }`}
             >
               <div>
@@ -111,8 +111,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
                   type="text"
                   placeholder="Cerca driver per nome..."
                   className={`w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-                      ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
-                      : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
+                    ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
+                    : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
                     }`}
                   value={driverSearchTerm}
                   onChange={(e) => setDriverSearchTerm(e.target.value)}
@@ -122,8 +122,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
               {driverSearchTerm && (
                 <div
                   className={`max-h-60 overflow-y-auto rounded-lg border ${isDarkMode
-                      ? "bg-gray-700 border-gray-600"
-                      : "bg-white border-gray-200"
+                    ? "bg-gray-700 border-gray-600"
+                    : "bg-white border-gray-200"
                     }`}
                 >
                   {drivers
@@ -195,8 +195,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           <input
             type="text"
             className={`px-3 py-2 border rounded-lg ${isDarkMode
-                ? "bg-gray-600 border-gray-500 text-gray-300"
-                : "bg-gray-100 border-gray-300 text-gray-600"
+              ? "bg-gray-600 border-gray-500 text-gray-300"
+              : "bg-gray-100 border-gray-300 text-gray-600"
               } cursor-not-allowed`}
             value={newFuelCard.targa || ""}
             readOnly
@@ -211,8 +211,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           <input
             type="text"
             className={`px-3 py-2 border rounded-lg ${isDarkMode
-                ? "bg-gray-600 border-gray-500 text-gray-300"
-                : "bg-gray-100 border-gray-300 text-gray-600"
+              ? "bg-gray-600 border-gray-500 text-gray-300"
+              : "bg-gray-100 border-gray-300 text-gray-600"
               } cursor-not-allowed`}
             value={newFuelCard.nome_driver || ""}
             readOnly
@@ -227,8 +227,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           <input
             type="text"
             className={`px-3 py-2 border rounded-lg ${isDarkMode
-                ? "bg-gray-600 border-gray-500 text-gray-300"
-                : "bg-gray-100 border-gray-300 text-gray-600"
+              ? "bg-gray-600 border-gray-500 text-gray-300"
+              : "bg-gray-100 border-gray-300 text-gray-600"
               } cursor-not-allowed`}
             value={newFuelCard.societa || ""}
             readOnly
@@ -243,8 +243,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           <input
             type="text"
             className={`px-3 py-2 border rounded-lg ${isDarkMode
-                ? "bg-gray-600 border-gray-500 text-gray-300"
-                : "bg-gray-100 border-gray-300 text-gray-600"
+              ? "bg-gray-600 border-gray-500 text-gray-300"
+              : "bg-gray-100 border-gray-300 text-gray-600"
               } cursor-not-allowed`}
             value={newFuelCard.alimentazione || ""}
             readOnly
@@ -257,8 +257,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           type="date"
           placeholder="Data Richiesta"
           className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-              ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500 dark-calendar"
-              : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
+            ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500 dark-calendar"
+            : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
             }`}
           value={newFuelCard.dataRichiesta || ""}
           onChange={(e) =>
@@ -268,8 +268,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
 
         <select
           className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-              ? "bg-gray-700 border-gray-600 text-gray-200 focus:border-blue-500"
-              : "bg-white border-gray-300 text-gray-900 focus:border-transparent"
+            ? "bg-gray-700 border-gray-600 text-gray-200 focus:border-blue-500"
+            : "bg-white border-gray-300 text-gray-900 focus:border-transparent"
             }`}
           value={newFuelCard.stato || "Non arrivata"}
           onChange={(e) =>
@@ -291,8 +291,8 @@ const FuelCardForm: React.FC<FuelCardFormProps> = ({
           type="text"
           placeholder="Referente"
           className={`px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${isDarkMode
-              ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
-              : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
+            ? "bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400 focus:border-blue-500"
+            : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-transparent"
             }`}
           value={newFuelCard.referente || ""}
           onChange={(e) =>

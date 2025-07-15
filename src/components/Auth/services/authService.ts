@@ -1,5 +1,5 @@
-import { supabase } from "../../../supabase";
-import { User, UserRole } from "../../../types";
+import { supabase } from "../../../supabase/supabase";
+import { User, UserRole } from "../../../entities/types";
 
 export interface AuthServiceInterface {
   signIn(

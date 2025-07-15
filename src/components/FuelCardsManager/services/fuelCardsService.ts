@@ -1,5 +1,5 @@
-import { supabase } from "../../../supabase";
-import { FuelCard, Driver } from "../../../types";
+import { supabase } from "../../../supabase/supabase";
+import { FuelCard, Driver } from "../../../entities/types";
 import { generateUUID } from "../../../utils/generateUuid";
 
 export interface FuelCardsServiceInterface {

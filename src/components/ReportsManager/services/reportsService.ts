@@ -1,5 +1,5 @@
-import { supabase } from "../../../supabase";
-import { Driver, Order, FuelCard } from "../../../types";
+import { supabase } from "../../../supabase/supabase";
+import { Driver, Order, FuelCard } from "../../../entities/types";
 
 export interface ReportsServiceInterface {
   exportToExcel(

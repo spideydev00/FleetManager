@@ -1,5 +1,5 @@
 import React from "react";
-import { Driver } from "../../../types";
+import { Driver } from "../../../entities/types";
 import { X, Edit, User, Car, Building2, Calendar, Euro, FileText } from "lucide-react";
 import AttachmentsManager from "./AttachmentsManager";
 
@@ -28,9 +28,8 @@ const DriverDetailModal: React.FC<DriverDetailModalProps> = ({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div
-        className={`${
-          isDarkMode ? "bg-gray-800" : "bg-white"
-        } rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto`}
+        className={`${isDarkMode ? "bg-gray-800" : "bg-white"
+          } rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto`}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-6">
@@ -43,22 +42,20 @@ const DriverDetailModal: React.FC<DriverDetailModalProps> = ({
           <div className="flex gap-2">
             <button
               onClick={() => onEdit(driver)}
-              className={`p-2 rounded-lg transition-colors ${
-                isDarkMode
+              className={`p-2 rounded-lg transition-colors ${isDarkMode
                   ? "hover:bg-gray-700 text-gray-300"
                   : "hover:bg-gray-100 text-gray-600"
-              }`}
+                }`}
               title="Modifica driver"
             >
               <Edit className="w-5 h-5" />
             </button>
             <button
               onClick={onClose}
-              className={`p-2 rounded-lg transition-colors ${
-                isDarkMode
+              className={`p-2 rounded-lg transition-colors ${isDarkMode
                   ? "hover:bg-gray-700 text-gray-300"
                   : "hover:bg-gray-100 text-gray-600"
-              }`}
+                }`}
             >
               <X className="w-5 h-5" />
             </button>

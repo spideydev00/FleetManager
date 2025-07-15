@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Driver } from "../../types";
+import { Driver } from "../../entities/types";
 import { reportsService } from "./services/reportsService";
 import ReportsHeader from "./components/ReportsHeader";
 import ReportsFilters from "./components/ReportsFilters";

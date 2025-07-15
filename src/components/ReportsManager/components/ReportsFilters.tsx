@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RotateCcw } from "lucide-react";
 import FilterSelector from "./filters/FilterSelector";
 import FilterItem, { FilterConfig } from "./filters/FilterItem";
-import { Driver } from "../../../types";
+import { Driver } from "../../../entities/types";
 
 interface ReportsFiltersProps {
   isDarkMode: boolean;
@@ -123,8 +123,8 @@ const ReportsFilters: React.FC<ReportsFiltersProps> = ({
             <button
               onClick={handleClearAllFilters}
               className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm ${isDarkMode
-                  ? "bg-gray-600 text-gray-200 hover:bg-gray-500"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                ? "bg-gray-600 text-gray-200 hover:bg-gray-500"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
             >
               <RotateCcw className="w-4 h-4" />
@@ -168,8 +168,8 @@ const ReportsFilters: React.FC<ReportsFiltersProps> = ({
       {filters.length > 0 && (
         <div
           className={`mt-4 p-3 rounded border ${isDarkMode
-              ? "bg-gray-700 border-gray-600"
-              : "bg-blue-50 border-blue-200"
+            ? "bg-gray-700 border-gray-600"
+            : "bg-blue-50 border-blue-200"
             }`}
         >
           <p

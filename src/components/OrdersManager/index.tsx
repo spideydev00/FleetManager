@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Order, OrderToMake, Driver } from "../../types";
+import { Order, OrderToMake, Driver } from "../../entities/types";
 import { ordersService } from "./services/ordersService";
 import { generateUUID } from "../../utils/generateUuid";
 import OrdersActionBar from "./components/OrdersActionBar";
@@ -431,29 +431,29 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
                 } else if (matchingDriversByName.length > 1) {
                   // Multiple drivers with same name, try to match by marca and modello
                   let bestMatch = null;
-                  
+
                   // First try exact match on both marca and modello
                   if (orderData.marca && orderData.modello) {
-                    bestMatch = matchingDriversByName.find(d => 
+                    bestMatch = matchingDriversByName.find(d =>
                       d.marca?.toLowerCase() === orderData.marca.toLowerCase() &&
                       d.modello?.toLowerCase() === orderData.modello.toLowerCase()
                     );
                   }
-                  
+
                   // If no exact match, try matching only marca
                   if (!bestMatch && orderData.marca) {
-                    bestMatch = matchingDriversByName.find(d => 
+                    bestMatch = matchingDriversByName.find(d =>
                       d.marca?.toLowerCase() === orderData.marca.toLowerCase()
                     );
                   }
-                  
+
                   // If still no match, try matching only modello
                   if (!bestMatch && orderData.modello) {
-                    bestMatch = matchingDriversByName.find(d => 
+                    bestMatch = matchingDriversByName.find(d =>
                       d.modello?.toLowerCase() === orderData.modello.toLowerCase()
                     );
                   }
-                  
+
                   if (bestMatch) {
                     selectedDriver = bestMatch;
                     driverId = bestMatch.id;
@@ -478,25 +478,25 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
               // Check for data inconsistencies and collect warnings
               if (selectedDriver) {
                 const warnings = [];
-                
+
                 // Check marca mismatch
-                if (orderData.marca && selectedDriver.marca && 
-                    orderData.marca.toLowerCase() !== selectedDriver.marca.toLowerCase()) {
+                if (orderData.marca && selectedDriver.marca &&
+                  orderData.marca.toLowerCase() !== selectedDriver.marca.toLowerCase()) {
                   warnings.push(`Marca corretta da "${orderData.marca}" a "${selectedDriver.marca}"`);
                 }
-                
+
                 // Check modello mismatch
-                if (orderData.modello && selectedDriver.modello && 
-                    orderData.modello.toLowerCase() !== selectedDriver.modello.toLowerCase()) {
+                if (orderData.modello && selectedDriver.modello &&
+                  orderData.modello.toLowerCase() !== selectedDriver.modello.toLowerCase()) {
                   warnings.push(`Modello corretto da "${orderData.modello}" a "${selectedDriver.modello}"`);
                 }
-                
+
                 // Check fornitore mismatch
-                if (orderData.fornitore && selectedDriver.noleggiatore && 
-                    orderData.fornitore.toLowerCase() !== selectedDriver.noleggiatore.toLowerCase()) {
+                if (orderData.fornitore && selectedDriver.noleggiatore &&
+                  orderData.fornitore.toLowerCase() !== selectedDriver.noleggiatore.toLowerCase()) {
                   warnings.push(`Fornitore corretto da "${orderData.fornitore}" a "${selectedDriver.noleggiatore}"`);
                 }
-                
+
                 if (warnings.length > 0) {
                   dataMismatchWarnings.push(
                     `Riga ${i + 1} - Driver "${orderData.nome_driver}": ${warnings.join(', ')}`
@@ -522,7 +522,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
             if (error) throw error;
 
             setOrders(importedData || []);
-            
+
             // Show appropriate messages
             let successMessage = "Importazione completata con successo!";
             let hasWarnings = false;
@@ -535,15 +535,15 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
 
             if (unmatchedOrders > 0) {
               const unmatchedMessage = `${unmatchedOrders} ordini potrebbero non essere stati associati correttamente ai driver.`;
-              successMessage = hasWarnings ? 
-                `${successMessage}\n\n${unmatchedMessage}` : 
+              successMessage = hasWarnings ?
+                `${successMessage}\n\n${unmatchedMessage}` :
                 `${successMessage}\n\n${unmatchedMessage}`;
               hasWarnings = true;
             }
 
             setOperationError(successMessage);
             setTimeout(() => setOperationError(""), hasWarnings ? 8000 : 3000);
-            
+
           } catch (error: any) {
             setOperationError(
               `Errore durante l'importazione: ${getErrorMessage(error)}`
@@ -653,36 +653,34 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
       {/* Error Message */}
       {operationError && (
         <div
-          className={`p-4 rounded-lg ${
-            operationError.toLowerCase().includes("success") ||
-            operationError.toLowerCase().includes("completat")
+          className={`p-4 rounded-lg ${operationError.toLowerCase().includes("success") ||
+              operationError.toLowerCase().includes("completat")
               ? operationError.toLowerCase().includes("attenzione") || operationError.toLowerCase().includes("corretti")
                 ? isDarkMode
                   ? "bg-yellow-900 border border-yellow-700"
                   : "bg-yellow-100 border border-yellow-300"
                 : isDarkMode
-                ? "bg-green-900"
-                : "bg-green-100"
+                  ? "bg-green-900"
+                  : "bg-green-100"
               : isDarkMode
-              ? "bg-red-900"
-              : "bg-red-100"
-          }`}
+                ? "bg-red-900"
+                : "bg-red-100"
+            }`}
         >
           <p
-            className={`text-sm whitespace-pre-line ${
-              operationError.toLowerCase().includes("success") ||
-              operationError.toLowerCase().includes("completat")
+            className={`text-sm whitespace-pre-line ${operationError.toLowerCase().includes("success") ||
+                operationError.toLowerCase().includes("completat")
                 ? operationError.toLowerCase().includes("attenzione") || operationError.toLowerCase().includes("corretti")
                   ? isDarkMode
                     ? "text-yellow-200"
                     : "text-yellow-800"
                   : isDarkMode
-                  ? "text-green-300"
-                  : "text-green-700"
+                    ? "text-green-300"
+                    : "text-green-700"
                 : isDarkMode
-                ? "text-red-300"
-                : "text-red-700"
-            }`}
+                  ? "text-red-300"
+                  : "text-red-700"
+              }`}
           >
             {operationError}
           </p>

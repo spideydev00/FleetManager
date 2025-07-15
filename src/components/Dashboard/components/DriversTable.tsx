@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useRef } from "react";
 import { Eye, Settings, Download, Loader2 } from "lucide-react";
-import { Driver } from "../../../types";
+import { Driver } from "../../../entities/types";
 import { dashboardService } from "../services/dashboardService";
 
 interface DriversTableProps {

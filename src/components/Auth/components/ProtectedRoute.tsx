@@ -1,5 +1,5 @@
 import React from "react";
-import { User, UserRole } from "../../../types";
+import { User, UserRole } from "../../../entities/types";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;

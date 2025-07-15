@@ -1,5 +1,5 @@
-import { supabase } from "../../../supabase";
-import { Order, OrderToMake, Driver } from "../../../types";
+import { supabase } from "../../../supabase/supabase";
+import { Order, OrderToMake, Driver } from "../../../entities/types";
 import { generateUUID } from "../../../utils/generateUuid";
 
 export interface OrdersServiceInterface {

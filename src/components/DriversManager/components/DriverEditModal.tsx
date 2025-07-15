@@ -1,5 +1,5 @@
 import React from "react";
-import { Driver } from "../../../types";
+import { Driver } from "../../../entities/types";
 import { X, Save, User } from "lucide-react";
 import { getEmissionsNumericValue } from "../../../utils/getEmissionsAsNumber";
 

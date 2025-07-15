@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { User as UserType } from "../../types";
+import { User as UserType } from "../../entities/types";
 
 interface HeaderProps {
   currentUser: UserType | null;
@@ -25,9 +25,8 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header
-      className={`${
-        isDarkMode ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
-      } border-b px-6 py-3`}
+      className={`${isDarkMode ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        } border-b px-6 py-3`}
     >
       <div className="flex justify-between items-center">
         <div>{/* Breadcrumbs or other header content can be added here */}</div>
@@ -49,11 +48,10 @@ const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={toggleDarkMode}
-            className={`p-2 rounded-full ${
-              isDarkMode
+            className={`p-2 rounded-full ${isDarkMode
                 ? "bg-gray-800 text-yellow-300 hover:bg-gray-700"
                 : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-            }`}
+              }`}
             title={isDarkMode ? "Passa a tema chiaro" : "Passa a tema scuro"}
           >
             {isDarkMode ? (
@@ -91,28 +89,25 @@ const Header: React.FC<HeaderProps> = ({
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className={`flex items-center space-x-2 p-2 rounded-full ${
-                isDarkMode
+              className={`flex items-center space-x-2 p-2 rounded-full ${isDarkMode
                   ? "hover:bg-gray-800 text-white"
                   : "hover:bg-gray-100 text-gray-700"
-              }`}
+                }`}
               title="Profilo utente"
             >
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  currentUser.role === "Creatore"
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${currentUser.role === "Creatore"
                     ? "bg-red-500"
                     : currentUser.role === "Manager"
-                    ? "bg-yellow-500"
-                    : "bg-green-500"
-                } text-white font-semibold`}
+                      ? "bg-yellow-500"
+                      : "bg-green-500"
+                  } text-white font-semibold`}
               >
                 {currentUser.nome.charAt(0)}
               </div>
               <span
-                className={`text-sm font-medium hidden sm:block ${
-                  isDarkMode ? "text-gray-200" : "text-gray-700"
-                }`}
+                className={`text-sm font-medium hidden sm:block ${isDarkMode ? "text-gray-200" : "text-gray-700"
+                  }`}
               >
                 {currentUser.nome}
               </span>
@@ -134,30 +129,27 @@ const Header: React.FC<HeaderProps> = ({
 
             {showUserMenu && (
               <div
-                className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 z-10 ${
-                  isDarkMode ? "bg-gray-800 border border-gray-700" : "bg-white"
-                }`}
+                className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 z-10 ${isDarkMode ? "bg-gray-800 border border-gray-700" : "bg-white"
+                  }`}
               >
                 <button
                   onClick={() => {
                     setShowUserProfile(true);
                     setShowUserMenu(false);
                   }}
-                  className={`block px-4 py-2 text-sm w-full text-left ${
-                    isDarkMode
+                  className={`block px-4 py-2 text-sm w-full text-left ${isDarkMode
                       ? "text-gray-300 hover:bg-gray-700"
                       : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   Profilo
                 </button>
                 <button
                   onClick={handleLogout}
-                  className={`block px-4 py-2 text-sm w-full text-left ${
-                    isDarkMode
+                  className={`block px-4 py-2 text-sm w-full text-left ${isDarkMode
                       ? "text-gray-300 hover:bg-gray-700"
                       : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                    }`}
                 >
                   Logout
                 </button>

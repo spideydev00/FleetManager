@@ -43,6 +43,19 @@ const LoginForm: React.FC<LoginFormProps> = ({
           </p>
         </div>
 
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <img
+            src="/tars-logo.png"
+            alt="TARS Logo"
+            className="h-24 w-auto object-contain"
+            onError={(e) => {
+              // Nasconde l'immagine se non viene trovata
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
+
         {/* Error Message */}
         {loginError && (
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
