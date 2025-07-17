@@ -61,12 +61,12 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
         </div>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-h-96 overflow-y-auto">
         <table
           className={`min-w-full divide-y ${isDarkMode ? "divide-gray-700" : "divide-gray-200"
             }`}
         >
-          <thead className={`${isDarkMode ? "bg-gray-900" : "bg-gray-50"}`}>
+          <thead className={`${isDarkMode ? "bg-gray-900" : "bg-gray-50"} sticky top-0 z-10`}>
             <tr>
               <th className="w-10 px-4 py-3"></th>
               <th

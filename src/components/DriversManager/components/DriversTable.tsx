@@ -74,9 +74,9 @@ const DriversTable: React.FC<DriversTableProps> = ({
           </p>
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto max-h-screen overflow-y-auto">
           <table className="w-full">
-            <thead className={`${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}>
+            <thead className={`${isDarkMode ? "bg-gray-900" : "bg-gray-100"} sticky top-0 z-10`}>
               <tr>
                 <th className="w-12 px-6 py-3 text-left">
                   <span className="sr-only">Seleziona</span>
