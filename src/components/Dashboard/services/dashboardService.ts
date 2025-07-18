@@ -263,10 +263,10 @@ class DashboardService implements DashboardServiceInterface {
 
   async fetchDrivers() {
     try {
-      // First, fetch all drivers
+      // Assicuriamoci che non ci siano limiti nella query
       const { data: driversData, error: driversError } = await supabase
         .from("drivers")
-        .select("*");
+        .select("*"); // Nessun limite qui
 
       if (driversError) throw driversError;
 
@@ -318,6 +318,8 @@ class DashboardService implements DashboardServiceInterface {
           allegati: attachmentsByDriver[d.id] || [],
         }));
 
+        // Verifichiamo che tutti i dati vengano restituiti senza filtraggio
+        console.log(`fetchDrivers: Recuperati ${drivers.length} driver dal database`);
         return { data: drivers, error: null };
       }
 

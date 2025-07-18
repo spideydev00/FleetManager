@@ -43,8 +43,8 @@ const DriverDetailModal: React.FC<DriverDetailModalProps> = ({
             <button
               onClick={() => onEdit(driver)}
               className={`p-2 rounded-lg transition-colors ${isDarkMode
-                  ? "hover:bg-gray-700 text-gray-300"
-                  : "hover:bg-gray-100 text-gray-600"
+                ? "hover:bg-gray-700 text-gray-300"
+                : "hover:bg-gray-100 text-gray-600"
                 }`}
               title="Modifica driver"
             >
@@ -53,8 +53,8 @@ const DriverDetailModal: React.FC<DriverDetailModalProps> = ({
             <button
               onClick={onClose}
               className={`p-2 rounded-lg transition-colors ${isDarkMode
-                  ? "hover:bg-gray-700 text-gray-300"
-                  : "hover:bg-gray-100 text-gray-600"
+                ? "hover:bg-gray-700 text-gray-300"
+                : "hover:bg-gray-100 text-gray-600"
                 }`}
             >
               <X className="w-5 h-5" />
@@ -153,7 +153,7 @@ const DriverDetailModal: React.FC<DriverDetailModalProps> = ({
                     Emissioni
                   </label>
                   <p className={`mt-1 ${isDarkMode ? "text-white" : "text-gray-800"}`}>
-                    {driver.emissioni || "Non specificato"}
+                    {`${driver.emissioni} g/km` || "Non specificato"}
                   </p>
                 </div>
               </div>

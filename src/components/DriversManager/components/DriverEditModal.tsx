@@ -223,7 +223,7 @@ const DriverEditModal: React.FC<DriverEditModalProps> = ({
                       <input
                         type="text"
                         value={getEmissionsNumericValue(editingDriver.emissioni)}
-                        onChange={(e) => handleChange("emissioni", `${e.target.value}g/km`)}
+                        onChange={(e) => handleChange("emissioni", `${e.target.value}`)}
                         className={`w-20 px-3 py-2 rounded-l-lg border border-r-0 ${isDarkMode
                           ? "bg-gray-600 border-gray-500 text-white"
                           : "bg-white border-gray-300 text-gray-800"

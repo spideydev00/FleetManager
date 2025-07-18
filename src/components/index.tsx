@@ -331,8 +331,31 @@ const FleetManagement: React.FC = () => {
             break;
 
           case "orders":
+            // Process the data and match with drivers
+            const processedOrders = jsonData.map((orderData: any) => {
+              // Try to find driver by name
+              let driverMatch = null;
+              if (orderData.nome_driver) {
+                driverMatch = drivers.find(
+                  d => d.nomeDriver.toLowerCase() === orderData.nome_driver.toLowerCase()
+                );
+              }
+
+              // Use the driver data to populate fields if found
+              if (driverMatch) {
+                return {
+                  ...orderData,
+                  driver_id: driverMatch.id,
+                  marca: driverMatch.marca || orderData.marca || "",
+                  modello: driverMatch.modello || orderData.modello || "",
+                  fornitore: driverMatch.noleggiatore || orderData.fornitore || "",
+                };
+              }
+              return orderData;
+            });
+
             const { data: orderData, error: orderError } =
-              await ordersService.importOrdersFromExcel(jsonData);
+              await ordersService.importOrdersFromExcel(processedOrders);
             if (orderError) throw orderError;
             setOrders(orderData || []);
             alert(`Importati ${jsonData.length} ordini con successo`);
@@ -475,6 +498,11 @@ const FleetManagement: React.FC = () => {
     };
   }, []);
 
+  // Aggiungiamo un log per verificare che i dati completi vengano passati alla Dashboard
+  useEffect(() => {
+    console.log(`App: Passing ${drivers.length} drivers to Dashboard component`);
+  }, [drivers]);
+
   // Render appropriate section based on active section
   const renderSection = () => {
     // Show loading indicator when data is being fetched
@@ -496,9 +524,9 @@ const FleetManagement: React.FC = () => {
             drivers={drivers}
             orders={orders}
             fuelCards={fuelCards}
+            isDarkMode={isDarkMode}
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
-            isDarkMode={isDarkMode}
             currentUser={currentUser}
           />
         );

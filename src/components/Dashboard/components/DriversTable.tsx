@@ -140,6 +140,8 @@ const DriversTable: React.FC<DriversTableProps> = ({
       const uniqueValues = new Set<string>();
       const uniqueYears = new Set<number>();
 
+      console.log("Numero di driver ricevuti:", drivers.length);
+
       drivers.forEach(driver => {
         let value: any;
         switch (columnId) {
@@ -309,9 +311,10 @@ const DriversTable: React.FC<DriversTableProps> = ({
     const rowHeight = 58;
     const headerHeight = 80;
     const filterRowHeight = showColumnFilters ? 40 : 0;
+    // Rimuovo la limitazione e uso tutti i driver filtrati
     const contentHeight =
-      Math.min(filteredDrivers.length, 10) * rowHeight + headerHeight + filterRowHeight;
-    return `${Math.min(parseInt(height), contentHeight)}px`;
+      filteredDrivers.length * rowHeight + headerHeight + filterRowHeight;
+    return `${Math.min(parseInt(height) || 600, contentHeight)}px`;
   };
 
   const handleColumnToggle = (columnId: string) => {
@@ -640,7 +643,12 @@ const DriversTable: React.FC<DriversTableProps> = ({
           className={`text-xs font-medium ${isDarkMode ? "text-blue-200" : "text-blue-700"
             }`}
         >
-          Clicca le icone sovrastanti per filtrare i dati oppure per scegliere le colonne da visualizzare.
+          {filteredDrivers.length > 0
+            ? `${filteredDrivers.length} driver ${filteredDrivers.length !== 1
+              ? "disponibili nella flotta"
+              : "disponibile nella flotta"
+            }`
+            : "Nessun driver nella flotta"}
         </span>
       </div>
 
@@ -648,8 +656,8 @@ const DriversTable: React.FC<DriversTableProps> = ({
       <div
         className="overflow-x-auto overflow-y-auto w-full relative"
         style={{
-          maxHeight: calculateTableHeight(),
-          height: calculateTableHeight(),
+          maxHeight: '800px', // Altezza aumentata
+          height: 'auto',
         }}
         onClick={() => setActiveFilterDropdown(null)}
       >
@@ -729,7 +737,8 @@ const DriversTable: React.FC<DriversTableProps> = ({
           </thead>
 
           <tbody className={isDarkMode ? "bg-gray-800" : "bg-white"}>
-            {filteredDrivers.slice(0, 10).map((driver, index) => (
+            {/* IMPORTANTE: Rimuovo completamente ogni limitazione sul numero di driver visualizzati */}
+            {filteredDrivers.map((driver, index) => (
               <tr
                 key={driver.id}
                 className={`border-b ${isDarkMode ? "border-gray-700" : "border-gray-200"
@@ -874,18 +883,10 @@ const DriversTable: React.FC<DriversTableProps> = ({
       </div>
 
       {/* Footer */}
-      <div
-        className={`px-5 py-3 border-t ${isDarkMode
-          ? "bg-gray-900 border-gray-700"
-          : "bg-gray-50 border-gray-200"
-          }`}
-      >
-        <div
-          className={`flex justify-between items-center text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"
-            }`}
-        >
+      <div className={`px-5 py-3 border-t ${isDarkMode ? "bg-gray-900 border-gray-700" : "bg-gray-50 border-gray-200"}`}>
+        <div className={`flex justify-between items-center text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
           <span className="font-medium">
-            Mostrando {Math.min(filteredDrivers.length, 10)} di {filteredDrivers.length} driver
+            Mostrando tutti i {filteredDrivers.length} driver
             {activeFiltersCount > 0 && ` (${drivers.length} totali)`}
           </span>
           {activeFiltersCount > 0 && (

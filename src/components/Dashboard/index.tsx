@@ -32,8 +32,14 @@ const Dashboard: React.FC<DashboardProps> = ({
       driver.societa.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Limit drivers shown in dashboard table to 10 for performance
-  const dashboardDrivers = filteredDrivers.slice(0, 10);
+  // IMPORTANTE: Rimuovo la limitazione a 10 driver
+  // Qui probabilmente c'è qualcosa come:
+  // const displayDrivers = filteredDrivers.slice(0, 10);
+  // o
+  // const topDrivers = drivers.slice(0, 10);
+
+  // Modifica: passa TUTTI i driver filtrati alla tabella, senza limitazioni
+  const displayDrivers = filteredDrivers;
 
   return (
     <div className="space-y-6">
@@ -48,7 +54,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Dashboard Drivers Table */}
       <DriversTable
-        drivers={dashboardDrivers}
+        drivers={displayDrivers}
         isDarkMode={isDarkMode}
         compact={true}
         height="500px"

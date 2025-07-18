@@ -140,57 +140,83 @@ class FuelCardsService implements FuelCardsServiceInterface {
     }
   }
 
-  async importFuelCardsFromExcel(fuelCards: any[]) {
+  async importFuelCardsFromExcel(fuelCardsData: any[]) {
     try {
-      // Get existing fuel cards to delete them
-      const { data: existingFuelCards, error: selectError } = await supabase
+      console.log("Service: Starting import with data:", fuelCardsData);
+
+      // First, delete ALL existing fuel cards
+      const { error: deleteError } = await supabase
         .from("fuel_cards")
-        .select("id");
+        .delete()
+        .gte("data_richiesta", "1900-01-01");
 
-      if (selectError) throw selectError;
-
-      // Delete existing fuel cards
-      if (existingFuelCards && existingFuelCards.length > 0) {
-        const existingIds = existingFuelCards.map((card) => card.id);
-        const { error: deleteError } = await supabase
-          .from("fuel_cards")
-          .delete()
-          .in("id", existingIds);
-
-        if (deleteError) throw deleteError;
+      if (deleteError) {
+        console.error("Error deleting existing fuel cards:", deleteError);
+        throw deleteError;
       }
 
-      // Prepare fuel cards for insertion
-      const fuelCardsToInsert = fuelCards.map((card) => ({
-        id: card.id || generateUUID(), // Generate UUID if no ID provided
-        targa: card.targa || "",
-        nome_driver: card.nome_driver || "",
-        societa: card.societa || "",
-        data_richiesta: card.data_richiesta || card.dataRichiesta || new Date().toISOString().split("T")[0],
-        alimentazione: card.alimentazione || "",
-        stato: card.stato || "Non arrivata",
-        personale: card.personale || "",
-        driver_id: card.driver_id || null,
-      }));
+      // Format data for insertion
+      const processedFuelCards = fuelCardsData.map((card) => {
+        // Parse date with support for multiple formats
+        const formatDate = (dt: any): string => {
+          if (!dt) return new Date().toISOString().split('T')[0];
+          
+          try {
+            // Check if it's a string in dd/mm/yy format
+            if (typeof dt === 'string' && /^\d{1,2}\/\d{1,2}\/\d{2}$/.test(dt)) {
+              const [day, month, year] = dt.split('/').map(part => parseInt(part, 10));
+              // Assume 20xx for years < 50, 19xx for years >= 50
+              const fullYear = year < 50 ? 2000 + year : 1900 + year;
+              return `${fullYear}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            }
+            
+            // Check if it's a string in dd/mm/yyyy format
+            if (typeof dt === 'string' && /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dt)) {
+              const [day, month, year] = dt.split('/').map(part => parseInt(part, 10));
+              return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            }
+            
+            // Try standard date parsing
+            const date = new Date(dt);
+            if (!isNaN(date.getTime())) {
+              return date.toISOString().split('T')[0];
+            }
+            
+            // Default to current date if parsing fails
+            return new Date().toISOString().split('T')[0];
+          } catch (e) {
+            console.warn("Error formatting date:", dt, e);
+            return new Date().toISOString().split('T')[0];
+          }
+        };
 
-      // Insert new fuel cards
-      const { data: fuelCardData, error: fuelCardError } = await supabase
+        return {
+          id: card.id || generateUUID(),
+          targa: card.targa || "",
+          nome_driver: card.nome_driver || "",
+          societa: card.societa || "",
+          driver_id: card.driver_id || null,
+          stato: card.stato || "Non arrivata",
+          personale: card.personale || "",
+          data_richiesta: formatDate(card.dataRichiesta || card.data_richiesta),
+          alimentazione: card.alimentazione || "",
+        };
+      });
+
+      console.log("Service: Processed fuel cards for insertion:", processedFuelCards);
+
+      const { error: insertError } = await supabase
         .from("fuel_cards")
-        .insert(fuelCardsToInsert)
-        .select();
+        .insert(processedFuelCards);
 
-      if (fuelCardError) throw fuelCardError;
-
-      // Map data for frontend
-      if (fuelCardData) {
-        const mappedData = fuelCardData.map((card) => ({
-          ...card,
-          dataRichiesta: card.data_richiesta,
-        }));
-        return { data: mappedData, error: null };
+      if (insertError) {
+        console.error("Error inserting fuel cards:", insertError);
+        throw insertError;
       }
 
-      return { data: [], error: null };
+      console.log("Service: All batches inserted successfully, fetching updated fuel cards");
+
+      return await this.fetchFuelCards();
     } catch (error) {
       console.error("Error importing fuel cards:", error);
       return { data: null, error };

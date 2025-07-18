@@ -265,50 +265,84 @@ class OrdersService implements OrdersServiceInterface {
     }
   }
 
-  async importOrdersFromExcel(orders: any[]) {
+  async importOrdersFromExcel(ordersData: any[]) {
     try {
-      // Get existing orders to delete them
-      const { data: existingOrders } = await supabase
+      console.log("Service: Starting import with data:", ordersData);
+
+      // First, delete ALL existing orders
+      const { error: deleteError } = await supabase
         .from("orders")
-        .select("id");
+        .delete()
+        .gte("data_ordine", "1900-01-01");
 
-      // Delete existing orders
-      if (existingOrders && existingOrders.length > 0) {
-        const existingIds = existingOrders.map((order) => order.id);
-        const { error: deleteError } = await supabase
-          .from("orders")
-          .delete()
-          .in("id", existingIds);
-
-        if (deleteError) throw deleteError;
+      if (deleteError) {
+        console.error("Error deleting existing orders:", deleteError);
+        throw deleteError;
       }
 
-      // Prepare orders for insertion
-      const ordersToInsert = orders.map((order) => ({
-        id: order.id || generateUUID(),
-        ordine: order.ordine || "",
-        nome_driver: order.nome_driver || "",
-        driver_id: order.driver_id || null,
-        marca: order.marca || "",
-        modello: order.modello || "",
-        fornitore: order.fornitore || "",
-        data_ordine: order.data_ordine || new Date().toISOString().split("T")[0],
-        consegnata: order.consegnata || false,
-      }));
+      // Format data for insertion
+      const processedOrders = ordersData.map((order) => {
+        // Parse date with support for multiple formats
+        const formatDate = (dt: any): string => {
+          if (!dt) return new Date().toISOString().split('T')[0];
+          
+          try {
+            // Check if it's a string in dd/mm/yy format
+            if (typeof dt === 'string' && /^\d{1,2}\/\d{1,2}\/\d{2}$/.test(dt)) {
+              const [day, month, year] = dt.split('/').map(part => parseInt(part, 10));
+              // Assume 20xx for years < 50, 19xx for years >= 50
+              const fullYear = year < 50 ? 2000 + year : 1900 + year;
+              return `${fullYear}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            }
+            
+            // Check if it's a string in dd/mm/yyyy format
+            if (typeof dt === 'string' && /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dt)) {
+              const [day, month, year] = dt.split('/').map(part => parseInt(part, 10));
+              return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            }
+            
+            // Try standard date parsing
+            const date = new Date(dt);
+            if (!isNaN(date.getTime())) {
+              return date.toISOString().split('T')[0];
+            }
+            
+            // Default to current date if parsing fails
+            return new Date().toISOString().split('T')[0];
+          } catch (e) {
+            console.warn("Error formatting date:", dt, e);
+            return new Date().toISOString().split('T')[0];
+          }
+        };
 
-      // Insert new orders
-      const { data: orderData, error: orderError } = await supabase
+        return {
+          id: order.id || generateUUID(),
+          ordine: order.ordine || `ORD-${new Date().getFullYear()}-${Math.floor(Math.random() * 1000).toString().padStart(3, "0")}`,
+          nome_driver: order.nome_driver || "",
+          marca: order.marca || "",
+          modello: order.modello || "",
+          fornitore: order.fornitore || "",
+          data_ordine: formatDate(order.data_ordine),
+          consegnata: order.consegnata === "true" || order.consegnata === true,
+          driver_id: order.driver_id || "",
+        };
+      });
+
+      console.log("Service: Processed orders for insertion:", processedOrders);
+
+      // Insert all orders at once, not in batches
+      const { error: insertError } = await supabase
         .from("orders")
-        .insert(ordersToInsert)
-        .select();
+        .insert(processedOrders);
 
-      if (orderError) throw orderError;
-
-      if (orderData) {
-        return { data: orderData, error: null };
+      if (insertError) {
+        console.error("Error inserting orders:", insertError);
+        throw insertError;
       }
 
-      return { data: [], error: null };
+      console.log("Service: Orders inserted successfully, fetching updated orders");
+
+      return await this.fetchOrders();
     } catch (error) {
       console.error("Error importing orders:", error);
       return { data: null, error };
