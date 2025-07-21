@@ -73,19 +73,25 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
                   } uppercase tracking-wider`}
               >
-                Targa
-              </th>
-              <th
-                className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider`}
-              >
                 Driver
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
                   } uppercase tracking-wider`}
               >
+                Targa
+              </th>
+              <th
+                className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                  } uppercase tracking-wider`}
+              >
                 Società
+              </th>
+              <th
+                className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
+                  } uppercase tracking-wider`}
+              >
+                Personale
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
@@ -104,12 +110,6 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
                   } uppercase tracking-wider`}
               >
                 Stato
-              </th>
-              <th
-                className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider`}
-              >
-                personale
               </th>
               <th className="px-4 py-3"></th>
             </tr>
@@ -134,37 +134,65 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
                     onChange={() => onSelectFuelCard(card.id)}
                   />
                 </td>
+                {/* Driver - Prima colonna */}
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-200" : "text-gray-800"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                    }`}
+                >
+                  <div className="max-w-[120px] break-words">
+                    {card.nome_driver}
+                  </div>
+                </td>
+                {/* Targa - Seconda colonna */}
+                <td
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
                   {card.targa}
                 </td>
+                {/* Società - Terza colonna */}
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
-                  {card.nome_driver}
+                  <div className="max-w-[100px]">
+                    {card.societa.startsWith("BASF") ? (
+                      <>
+                        <div className="font-medium">BASF</div>
+                        <div className="text-xs break-words">
+                          {card.societa.replace(/^BASF\s*/, "")}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="break-words">{card.societa}</div>
+                    )}
+                  </div>
                 </td>
+                {/* Personale - Quarta colonna */}
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
-                  {card.societa}
+                  <div className="max-w-[100px] break-words">
+                    {card.personale}
+                  </div>
                 </td>
+                {/* Data Richiesta - Quinta colonna */}
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
                   {new Date(card.dataRichiesta).toLocaleDateString("it-IT")}
                 </td>
+                {/* Alimentazione - Sesta colonna */}
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
                   {card.alimentazione}
                 </td>
-                <td className={`px-4 py-4 whitespace-nowrap text-sm`}>
+                {/* Stato - Settima colonna */}
+                <td className={`px-4 py-4 text-sm`}>
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-medium ${card.stato === "Arrivata"
                       ? "bg-green-600 text-green-50"
@@ -176,13 +204,8 @@ const FuelCardsTable: React.FC<FuelCardsTableProps> = ({
                     {card.stato}
                   </span>
                 </td>
-                <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
-                    }`}
-                >
-                  {card.personale}
-                </td>
-                <td className="px-4 py-4 whitespace-nowrap text-right text-sm">
+                {/* Azioni - Ottava colonna */}
+                <td className="px-4 py-4 text-right text-sm">
                   <div className="flex space-x-2 justify-end">
                     <button
                       onClick={() => onEditFuelCard(card)}

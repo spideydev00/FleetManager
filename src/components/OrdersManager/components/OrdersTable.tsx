@@ -95,7 +95,7 @@ const OrdersTable: React.FC<OrdersTableProps> = ({
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider cursor-pointer`}
+                  } uppercase tracking-wider cursor-pointer min-w-[120px]`}
                 onClick={() => handleSort("ordine")}
               >
                 <div className="flex items-center">
@@ -110,25 +110,25 @@ const OrdersTable: React.FC<OrdersTableProps> = ({
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider`}
+                  } uppercase tracking-wider min-w-[120px]`}
               >
                 Driver
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider`}
+                  } uppercase tracking-wider min-w-[150px]`}
               >
                 Veicolo
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider`}
+                  } uppercase tracking-wider min-w-[120px]`}
               >
                 Fornitore
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider cursor-pointer`}
+                  } uppercase tracking-wider cursor-pointer min-w-[110px]`}
                 onClick={() => handleSort("data_ordine")}
               >
                 <div className="flex items-center">
@@ -143,11 +143,11 @@ const OrdersTable: React.FC<OrdersTableProps> = ({
               </th>
               <th
                 className={`px-4 py-3 text-left text-xs font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"
-                  } uppercase tracking-wider`}
+                  } uppercase tracking-wider min-w-[100px]`}
               >
                 Stato
               </th>
-              <th className="px-4 py-3"></th>
+              <th className="px-4 py-3 min-w-[80px]"></th>
             </tr>
           </thead>
           <tbody
@@ -169,38 +169,51 @@ const OrdersTable: React.FC<OrdersTableProps> = ({
                   />
                 </td>
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-200" : "text-gray-800"
+                  className={`px-4 py-4 text-sm font-mono ${isDarkMode ? "text-gray-200" : "text-gray-800"
                     }`}
                 >
-                  {order.ordine}
+                  <div className="truncate max-w-[100px]" title={order.ordine}>
+                    {order.ordine}
+                  </div>
                 </td>
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
-                  {order.nome_driver}
+                  <div className="max-w-[120px] break-words" title={order.nome_driver}>
+                    {order.nome_driver}
+                  </div>
                 </td>
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
-                  {order.marca} {order.modello}
+                  <div className="max-w-[130px]">
+                    <div className="font-medium truncate" title={`${order.marca} ${order.modello}`}>
+                      {order.marca}
+                    </div>
+                    <div className="text-xs truncate" title={order.modello}>
+                      {order.modello}
+                    </div>
+                  </div>
                 </td>
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
-                  {order.fornitore}
+                  <div className="truncate max-w-[100px]" title={order.fornitore}>
+                    {order.fornitore}
+                  </div>
                 </td>
                 <td
-                  className={`px-4 py-4 whitespace-nowrap text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
+                  className={`px-4 py-4 text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"
                     }`}
                 >
                   {new Date(order.data_ordine).toLocaleDateString("it-IT")}
                 </td>
-                <td className={`px-4 py-4 whitespace-nowrap text-sm`}>
+                <td className={`px-4 py-4 text-sm`}>
                   <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${order.consegnata
+                    className={`px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap ${order.consegnata
                       ? "bg-green-600 text-green-50"
                       : "bg-red-600 text-red-50"
                       }`}
@@ -208,7 +221,7 @@ const OrdersTable: React.FC<OrdersTableProps> = ({
                     {order.consegnata ? "Consegnata" : "Non consegnata"}
                   </span>
                 </td>
-                <td className="px-4 py-4 whitespace-nowrap text-right text-sm">
+                <td className="px-4 py-4 text-right text-sm">
                   <div className="flex space-x-2 justify-end">
                     <button
                       onClick={() => onEditOrder(order)}

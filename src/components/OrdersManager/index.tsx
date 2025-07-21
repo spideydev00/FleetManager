@@ -619,8 +619,8 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
               selectedOrdersToMake.length === allIds.length ? [] : allIds
             );
           }}
-          onSelectOrder={toggleOrderToMakeSelection}
-          onEditOrder={(order) => {
+          onSelectOrderToMake={toggleOrderToMakeSelection}
+          onEditOrderToMake={(order: OrderToMake) => {
             setEditingOrderToMake(order);
             if (order.driver_id) {
               const selectedDriver = drivers.find(
@@ -632,7 +632,7 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({
             }
             setShowOrderToMakeForm(true);
           }}
-          onDeleteOrder={deleteOrderToMake}
+          onDeleteOrderToMake={deleteOrderToMake}
         />
       )}
 
