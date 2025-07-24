@@ -612,8 +612,7 @@ const OrderForm: React.FC<OrderFormProps> = ({
                       Canone Mensile (€)
                     </label>
                     <input
-                      type="number"
-                      step="0.01"
+                      type="text"
                       className={`w-full px-3 py-2 rounded-lg border text-sm ${isDarkMode
                         ? "bg-gray-800 border-gray-600 text-gray-100"
                         : "bg-white border-gray-300 text-gray-900"
@@ -635,7 +634,7 @@ const OrderForm: React.FC<OrderFormProps> = ({
                       KM Contrattuali
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       className={`w-full px-3 py-2 rounded-lg border text-sm ${isDarkMode
                         ? "bg-gray-800 border-gray-600 text-gray-100"
                         : "bg-white border-gray-300 text-gray-900"

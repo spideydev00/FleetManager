@@ -285,7 +285,6 @@ const DriverEditModal: React.FC<DriverEditModalProps> = ({
                     </label>
                     <input
                       type="text"
-                      step="0.01"
                       value={editingDriver.canoneMensile || ""}
                       onChange={(e) => handleChange("canoneMensile", parseFloat(e.target.value) || 0)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode

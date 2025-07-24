@@ -266,8 +266,7 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       Canone Mensile (€)
                     </label>
                     <input
-                      type="number"
-                      step="0.01"
+                      type="text"
                       value={newDriver.canoneMensile || ""}
                       onChange={(e) => handleChange("canoneMensile", parseFloat(e.target.value) || 0)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
@@ -282,7 +281,7 @@ const DriverForm: React.FC<DriverFormProps> = ({
                       Km Contrattuali
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       value={newDriver.kmContrattuali || ""}
                       onChange={(e) => handleChange("kmContrattuali", parseInt(e.target.value) || 0)}
                       className={`w-full px-3 py-2 rounded-lg border ${isDarkMode
