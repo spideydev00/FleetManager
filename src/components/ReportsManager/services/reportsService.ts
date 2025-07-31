@@ -1,5 +1,6 @@
 import { supabase } from "../../../supabase/supabase";
 import { Driver, Order, FuelCard } from "../../../entities/types";
+import { getEmissionsNumericValue } from "../../../utils/getEmissionsAsNumber";
 
 export interface ReportsServiceInterface {
   exportToExcel(
@@ -12,7 +13,7 @@ export interface ReportsServiceInterface {
   ): Promise<{ success: boolean; error?: any }>;
   calculateFleetStatistics(drivers: Driver[]): any;
   generateChartData(drivers: Driver[]): any;
-  parseEmissions(emissionsString: string): number;
+  parseEmissions(emissionsString: string | number | undefined): number;
   // Additional data fetching methods
   fetchDrivers(): Promise<{ data: Driver[] | null; error: any }>;
   fetchOrders(): Promise<{ data: Order[] | null; error: any }>;
@@ -21,10 +22,15 @@ export interface ReportsServiceInterface {
 
 class ReportsService implements ReportsServiceInterface {
   // Parse emissions from string format (e.g., "16g/km")
-  parseEmissions(emissionsString: string): number {
+  parseEmissions(emissionsString: string | number | undefined): number {
     if (!emissionsString) return 0;
-    const match = emissionsString.match(/(\d+(?:\.\d+)?)/);
-    return match ? parseFloat(match[1]) : 0;
+
+    // Use the existing utility function to get numeric value
+    const numericValue = getEmissionsNumericValue(emissionsString);
+
+    // Convert to number and return
+    const parsed = parseFloat(numericValue);
+    return isNaN(parsed) ? 0 : parsed;
   }
 
   async exportToExcel(drivers: Driver[], filename?: string) {
@@ -98,9 +104,9 @@ class ReportsService implements ReportsServiceInterface {
     const avgEmissions =
       emissionsData.length > 0
         ? Math.round(
-            emissionsData.reduce((a, b) => a + b.value, 0) /
-              emissionsData.length
-          )
+          emissionsData.reduce((a, b) => a + b.value, 0) /
+          emissionsData.length
+        )
         : 0;
     const minEmissions =
       emissionsData.length > 0
@@ -176,7 +182,7 @@ class ReportsService implements ReportsServiceInterface {
 
     const emissionsDistribution = emissionsWithData.reduce((acc, emission) => {
       let rangeKey: string;
-      
+
       if (emission.value <= 100) {
         rangeKey = "0-100";
       } else if (emission.value <= 130) {
@@ -188,7 +194,7 @@ class ReportsService implements ReportsServiceInterface {
       } else {
         rangeKey = "201+";
       }
-      
+
       if (!acc[rangeKey]) {
         acc[rangeKey] = 0;
       }
